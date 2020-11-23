@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/clinic/static/css/main.d0240a54.chunk.css",
+    "main.js": "/clinic/static/js/main.23cba0be.chunk.js",
+    "main.js.map": "/clinic/static/js/main.23cba0be.chunk.js.map",
+    "runtime-main.js": "/clinic/static/js/runtime-main.cc94648b.js",
+    "runtime-main.js.map": "/clinic/static/js/runtime-main.cc94648b.js.map",
+    "static/js/2.6022a2ab.chunk.js": "/clinic/static/js/2.6022a2ab.chunk.js",
+    "static/js/2.6022a2ab.chunk.js.map": "/clinic/static/js/2.6022a2ab.chunk.js.map",
+    "index.html": "/clinic/index.html",
+    "precache-manifest.fb1e68f2cca6e94708d2d1842c3b2f42.js": "/clinic/precache-manifest.fb1e68f2cca6e94708d2d1842c3b2f42.js",
+    "service-worker.js": "/clinic/service-worker.js",
+    "static/css/main.d0240a54.chunk.css.map": "/clinic/static/css/main.d0240a54.chunk.css.map",
+    "static/js/2.6022a2ab.chunk.js.LICENSE.txt": "/clinic/static/js/2.6022a2ab.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cc94648b.js",
+    "static/js/2.6022a2ab.chunk.js",
+    "static/css/main.d0240a54.chunk.css",
+    "static/js/main.23cba0be.chunk.js"
+  ]
+}
