@@ -1,0 +1,106 @@
+.overall {
+  padding-top: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.label {
+  font-weight: bold;
+  display: flex;
+  align-items: flex-start;
+}
+
+.label input,
+.label div {
+  flex: 1;
+  font-weight: normal;
+  border-bottom: 1px dotted gray;
+  border-top: 1px solid transparent;
+  border-right: 1px solid transparent;
+  border-left: 1px solid transparent;
+}
+.label input:focus,
+.label div:focus {
+  font-weight: normal;
+  outline: transparent;
+  border-bottom: 1px solid gray;
+}
+
+.rx {
+  font-size: 50px;
+}
+
+.prescription,
+.prescription table {
+  width: 100%;
+}
+
+.prescription td {
+  padding: 0 0 0 0;
+  border: 1px solid gray;
+}
+
+.schedule {
+  display: flex;
+}
+
+.morning,
+.afternoon,
+.night {
+  text-align: center;
+  flex-grow: 1;
+}
+
+.middle {
+  border: none;
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+}
+
+.maybe td,
+.maybe > td > input::placeholder,
+.maybe > td > div > div > input::placeholder,
+.maybe > td > [contentEditable="true"]:empty:not(:focus):before {
+  color: lightgrey;
+}
+.maybe td {
+  text-align: center;
+  padding: 0 0 0 0;
+  border: 1px dotted lightgray;
+}
+.maybeMiddle {
+  border-left: 1px dotted lightgray;
+  border-right: 1px dotted lightgray;
+}
+
+.tableInput {
+  border: none;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+[contentEditable="true"]:empty:not(:focus):before {
+  content: attr(data-ph);
+  padding-left: 2px;
+  color: grey;
+}
+
+@media print {
+  .overall {
+    padding-top: 75mm;
+  }
+  .label div,
+  .prescription td,
+  .tableInput,
+  .middle,
+  input {
+    border: none !important;
+  }
+  input {
+    box-shadow: none !important;
+    outline: none !important;
+  }
+  .maybe {
+    display: none;
+  }
+}
