@@ -9,8 +9,6 @@
   display: flex;
   align-items: flex-start;
 }
-
-.label input,
 .label div {
   flex: 1;
   font-weight: normal;
@@ -19,7 +17,6 @@
   border-right: 1px solid transparent;
   border-left: 1px solid transparent;
 }
-.label input:focus,
 .label div:focus {
   font-weight: normal;
   outline: transparent;
@@ -43,34 +40,39 @@
 .schedule {
   display: flex;
 }
+.schedule input {
+  width: 40px;
+  text-align: center;
+}
 
-.morning,
-.afternoon,
-.night {
+.schedule > div {
   text-align: center;
   flex-grow: 1;
 }
 
-.middle {
+.left {
   border: none;
   border-left: 1px solid gray;
-  border-right: 1px solid gray;
 }
 
 .maybe td,
-.maybe > td > input::placeholder,
-.maybe > td > div > div > input::placeholder,
+.maybe input::placeholder,
 .maybe > td > [contentEditable="true"]:empty:not(:focus):before {
   color: lightgrey;
 }
+
+.maybe .schedule input {
+  border: 1px solid lightgray;
+}
+
 .maybe td {
   text-align: center;
   padding: 0 0 0 0;
   border: 1px dotted lightgray;
 }
-.maybeMiddle {
+
+.maybeLeft {
   border-left: 1px dotted lightgray;
-  border-right: 1px dotted lightgray;
 }
 
 .tableInput {
@@ -92,7 +94,7 @@
   .label div,
   .prescription td,
   .tableInput,
-  .middle,
+  .left,
   input {
     border: none !important;
   }
