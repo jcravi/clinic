@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { ChangeEvent, Fragment, useState } from 'react';
 import './App.css';
 
 const labels: Array<string> = ['Name', 'Diagnosis', 'Procedure done', 'Care'];
@@ -27,7 +27,7 @@ export const App = () => {
     <div className='overall'>
       <div className='info'>
         {labels.map((name) => {
-          return <Label name={name} />;
+          return <Label name={name} key={name} />;
         })}
       </div>
       <div className='rx'>{'\u211E'}</div>
@@ -40,6 +40,7 @@ export const App = () => {
                 const index = i + 1;
                 return (
                   <Row
+                    key={`key-${index}`}
                     index={index}
                     currentSize={currentSize}
                     entered={entered}
@@ -63,11 +64,12 @@ const Row = ({ currentSize, index, entered }: RowProps) => {
   const [maybe, maybeLeft] =
     index === currentSize ? ['maybe', 'maybeLeft'] : ['', 'left'];
 
-  const times = [
-    { time: 'Morning', className: '' },
-    { time: 'Afternoon', className: maybeLeft },
-    { time: 'Night', className: maybeLeft },
-  ];
+  const [times, setTimes] = useState([
+    { time: 'Morning', css: 'empty' },
+    { time: 'Afternoon', css: 'empty' },
+    { time: 'Night', css: 'empty' },
+  ]);
+
   return (
     <Fragment key={`key-${index}`}>
       <tr className={maybe}>
@@ -120,11 +122,27 @@ const Row = ({ currentSize, index, entered }: RowProps) => {
         <td></td>
         <td>
           <div className='schedule'>
-            {times.map(({ time, className }) => {
+            {times.map(({ time, css }, index) => {
+              const handleChanged = ({
+                target: { value },
+              }: ChangeEvent<HTMLInputElement>) => {
+                const timesCopy = [...times];
+                const time = {
+                  ...timesCopy[index],
+                  css: value === '0' ? 'empty' : '',
+                };
+                timesCopy[index] = time;
+                setTimes(timesCopy);
+              };
               return (
-                <div className={className}>
+                <div className={css} key={time}>
                   <div>
-                    <input type='number' min={0} max={99} />
+                    <input
+                      type='number'
+                      min={0}
+                      max={99}
+                      onChange={handleChanged}
+                    />
                   </div>
                   {time}
                 </div>
