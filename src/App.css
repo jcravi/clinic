@@ -55,14 +55,18 @@
   color: lightgrey;
 }
 
-.maybe .schedule input {
-  border: 1px solid lightgray;
-}
-
 .maybe td {
   text-align: center;
   padding: 0 0 0 0;
   border: 1px dotted lightgray;
+}
+input[type='number'] {
+  border: none;
+}
+
+.maybe input[type='number']::-webkit-outer-spin-button,
+.maybe input[type='number']::-webkit-inner-spin-button {
+  opacity: 0.3;
 }
 
 .tableInput {
@@ -77,6 +81,11 @@ div[contentEditable='true']:empty:not(:focus):before {
   color: grey;
 }
 
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  opacity: 1;
+}
+
 @media print {
   .overall {
     padding-top: 75mm;
@@ -85,25 +94,22 @@ div[contentEditable='true']:empty:not(:focus):before {
   .prescription td,
   .tableInput,
   input {
-    border: none !important;
+    border: none;
     caret-color: transparent;
   }
   input {
-    box-shadow: none !important;
-    outline: none !important;
+    box-shadow: none;
+    outline: none;
   }
-  .maybe,
-  .empty {
+  .maybe {
     display: none;
   }
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
+  .hidden {
+    visibility: hidden;
+  }
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
-  }
-
-  /* Firefox */
-  input[type='number'] {
-    -moz-appearance: textfield;
   }
 }

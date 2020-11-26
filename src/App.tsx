@@ -64,11 +64,11 @@ const Row = ({ currentSize, index, entered }: RowProps) => {
   const [maybe, maybeLeft] =
     index === currentSize ? ['maybe', 'maybeLeft'] : ['', 'left'];
 
-  const [times, setTimes] = useState([
-    { time: 'Morning', css: 'empty' },
-    { time: 'Afternoon', css: 'empty' },
-    { time: 'Night', css: 'empty' },
-  ]);
+  const timeOfDay = ['Morning', 'Afternoon', 'Night'].map((time) => ({
+    time,
+    css: 'hidden',
+  }));
+  const [times, setTimes] = useState(timeOfDay);
 
   return (
     <Fragment key={`key-${index}`}>
@@ -91,7 +91,7 @@ const Row = ({ currentSize, index, entered }: RowProps) => {
               <input
                 style={{ width: '100%' }}
                 type='text'
-                placeholder='Name &amp; Strength'
+                placeholder='Medicine Name &amp; Strength'
                 className='tableInput'
                 onChange={() => entered(index)}
               />
@@ -127,18 +127,18 @@ const Row = ({ currentSize, index, entered }: RowProps) => {
                 target: { value },
               }: ChangeEvent<HTMLInputElement>) => {
                 const timesCopy = [...times];
-                const time = {
-                  ...timesCopy[index],
-                  css: value === '0' ? 'empty' : '',
+                timesCopy[index] = {
+                  time,
+                  css: value === '0' ? 'hidden' : '',
                 };
-                timesCopy[index] = time;
                 setTimes(timesCopy);
               };
               return (
-                <div className={css} key={time}>
+                <div key={time} className={css}>
                   <div>
                     <input
                       type='number'
+                      placeholder='0'
                       min={0}
                       max={99}
                       onChange={handleChanged}
