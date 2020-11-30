@@ -9,6 +9,9 @@ const Div = styled.div<{ light: boolean }>`
     text-align: center;
     flex-grow: 1;
   }
+  @media print {
+    border-top: none;
+  }
 `;
 
 const NumberInput = styled.input.attrs((_) => ({
