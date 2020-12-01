@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { DailyQuantity } from './DailyQuantity';
+import { DailyQuantities } from './DailyQuantities';
 
 const StyledRow = styled.tr<{ light: boolean }>`
   & input::placeholder,
@@ -57,6 +57,31 @@ const Input = styled.input`
   }
 `;
 
+const TextArea = styled.textarea<{ light: boolean }>`
+  vertical-align: top;
+  width: 100px;
+  height: 75px;
+  border: none;
+  overflow: hidden;
+  resize: vertical;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  &::placeholder {
+    color: ${({ light }) => (light ? 'lightgray' : 'gray')};
+  }
+  &::-webkit-resizer {
+    display: none;
+  }
+  @media print {
+    &:focus {
+      outline: none;
+    }
+    &::placeholder {
+      color: transparent;
+    }
+  }
+`;
+
 type RowProps = {
   size: number;
   index: number;
@@ -66,7 +91,6 @@ type RowProps = {
 
 export const Row = ({ size, index, entered, removed }: RowProps) => {
   const light = index === size;
-  const [dailySize, setDailySize] = useState(1);
 
   const onTextAreaInput = ({
     currentTarget,
@@ -99,32 +123,7 @@ export const Row = ({ size, index, entered, removed }: RowProps) => {
           </div>
         </div>
         <Dosage light={light}>
-          {Array(dailySize)
-            .fill('')
-            .map((_, i) => {
-              const changedDates = ({
-                target: { value },
-              }: React.ChangeEvent<HTMLInputElement>) => {
-                if (i === dailySize - 1 && value.length !== 0) {
-                  setDailySize(dailySize + 1);
-                }
-              };
-              const removedDate = ({
-                target: { value },
-              }: React.ChangeEvent<HTMLInputElement>) => {
-                if (i !== dailySize - 1 && value.length === 0) {
-                  setDailySize(dailySize - 1);
-                }
-              };
-              return (
-                <DailyQuantity
-                  key={`daily-${index}-${i}`}
-                  light={light}
-                  changedDates={changedDates}
-                  removedDate={removedDate}
-                />
-              );
-            })}
+          <DailyQuantities rowIndex={index} light={light} />
         </Dosage>
       </td>
       <td
@@ -139,28 +138,3 @@ export const Row = ({ size, index, entered, removed }: RowProps) => {
     </StyledRow>
   );
 };
-
-const TextArea = styled.textarea<{ light: boolean }>`
-  vertical-align: top;
-  width: 100px;
-  height: 75px;
-  border: none;
-  overflow: hidden;
-  resize: vertical;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  &::placeholder {
-    color: ${({ light }) => (light ? 'lightgray' : 'gray')};
-  }
-  &::-webkit-resizer {
-    display: none;
-  }
-  @media print {
-    &:focus {
-      outline: none;
-    }
-    &::placeholder {
-      color: transparent;
-    }
-  }
-`;

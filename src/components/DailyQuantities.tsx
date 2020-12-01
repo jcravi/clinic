@@ -5,10 +5,6 @@ const Div = styled.div<{ light: boolean }>`
   display: flex;
   border-top: ${({ light }) =>
     light ? '1px dotted lightgray' : '1px dotted gray'};
-  & > div {
-    text-align: center;
-    flex-grow: 1;
-  }
   @media print {
     border-top: none;
   }
@@ -58,23 +54,78 @@ const DateInput = styled.input`
 `;
 
 const Item = styled.div<{ light: boolean }>`
-  width: 100px;
+  width: 120px;
+  text-align: center;
   @media print {
     visibility: ${({ light }) => (light ? 'hidden' : 'visible')};
   }
 `;
 
-type DailyQuantityProps = {
+const ItemDate = styled.div`
+  flex-grow: 1;
+  padding-left: 10px;
+  text-align: left;
+  & input {
+    text-align: left;
+  }
+`;
+
+type DailyQuantitiesProps = {
+  rowIndex: number;
+  light: boolean;
+};
+
+export const DailyQuantities = ({ rowIndex, light }: DailyQuantitiesProps) => {
+  const [dailySize, setDailySize] = useState(1);
+  return (
+    <>
+      <Div light={light}>
+        <Item light={light}>Morning</Item>
+        <Item light={light}>Afternoon</Item>
+        <Item light={light}>Night</Item>
+        <ItemDate style={{ paddingLeft: '12px' }}>Dates</ItemDate>
+      </Div>
+      {Array(dailySize)
+        .fill('')
+        .map((_, i) => {
+          const changedDates = ({
+            target: { value },
+          }: React.ChangeEvent<HTMLInputElement>) => {
+            if (i === dailySize - 1 && value.length !== 0) {
+              setDailySize(dailySize + 1);
+            }
+          };
+          const removedDate = ({
+            target: { value },
+          }: React.ChangeEvent<HTMLInputElement>) => {
+            if (i !== dailySize - 1 && value.length === 0) {
+              setDailySize(dailySize - 1);
+            }
+          };
+          return (
+            <DailyQuantityRow
+              key={`daily-${rowIndex}-${i}`}
+              light={light}
+              changedDates={changedDates}
+              removedDate={removedDate}
+            />
+          );
+        })}
+    </>
+  );
+};
+
+type DailyQuantityRowProps = {
   light: boolean;
   changedDates: (event: React.ChangeEvent<HTMLInputElement>) => void;
   removedDate: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export const DailyQuantity = ({
+const DailyQuantityRow = ({
   light,
   changedDates,
   removedDate,
-}: DailyQuantityProps) => {
+}: DailyQuantityRowProps) => {
   const timeOfDay = ['Morning', 'Afternoon', 'Night'].map((time) => ({
     time,
     light: true,
@@ -95,38 +146,18 @@ export const DailyQuantity = ({
           setTimes(timesCopy);
         };
         return (
-          <DailyQuantityItem
-            key={time}
-            time={time}
-            light={light}
-            handleChanged={handleChanged}
-          />
+          <Item light={light}>
+            <NumberInput onChange={handleChanged} />
+          </Item>
         );
       })}
-      <div>
+      <ItemDate>
         <DateInput
-          placeholder='Days'
+          placeholder='Dates'
           onChange={changedDates}
           onBlur={removedDate}
         />
-      </div>
+      </ItemDate>
     </Div>
-  );
-};
-
-type ItemProps = {
-  time: string;
-  light: boolean;
-  handleChanged: (event: ChangeEvent<HTMLInputElement>) => void;
-};
-
-const DailyQuantityItem = ({ time, light, handleChanged }: ItemProps) => {
-  return (
-    <Item light={light}>
-      <div>
-        <NumberInput onChange={handleChanged} />
-      </div>
-      {time}
-    </Item>
   );
 };
