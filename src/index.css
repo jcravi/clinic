@@ -48,5 +48,6 @@ body.A4 .sheet {
   }
   @page {
     size: A4;
+    margin: 0;
   }
 }

@@ -146,7 +146,7 @@ const DailyQuantityRow = ({
           setTimes(timesCopy);
         };
         return (
-          <Item light={light}>
+          <Item key={time} light={light}>
             <NumberInput onChange={handleChanged} />
           </Item>
         );
