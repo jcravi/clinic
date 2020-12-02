@@ -7,24 +7,31 @@ const StyledLabel = styled.label`
   align-items: flex-start;
 `;
 
-const EditableDiv = styled.div`
-  flex: 1;
+const TextArea = styled.textarea`
+  vertical-align: top;
+  width: 100%;
+  height: 26px;
+  border: none;
   border-bottom: 1px dotted gray;
-  border-top: 1px solid transparent;
-  border-right: 1px solid transparent;
-  border-left: 1px solid transparent;
+  overflow: hidden;
+  padding-top: 0px;
+  resize: vertical;
+  &::-webkit-resizer {
+    display: none;
+  }
   &:focus {
-    font-weight: normal;
     outline: transparent;
     border-bottom: 1px solid gray;
   }
   @media print {
-    &:focus {
-      border: none;
-      caret-color: transparent;
-    }
     border: none;
-    caret-color: transparent;
+    &:focus {
+      outline: none;
+      border: none;
+    }
+    &::placeholder {
+      color: transparent;
+    }
   }
 `;
 
@@ -33,11 +40,17 @@ type LabelProps = {
 };
 
 export const Label = ({ name }: LabelProps) => {
+  const onTextAreaInput = ({
+    currentTarget,
+  }: React.FormEvent<HTMLTextAreaElement>) => {
+    currentTarget.style.height = '26px';
+    currentTarget.style.height = `${currentTarget.scrollHeight}px`;
+  };
   return (
     <div>
       <StyledLabel>
         {name}:&nbsp;
-        <EditableDiv contentEditable />
+        <TextArea onInput={onTextAreaInput} />
       </StyledLabel>
     </div>
   );

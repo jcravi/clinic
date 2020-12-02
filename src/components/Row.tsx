@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import { DailyQuantities } from './DailyQuantities';
 
 const StyledRow = styled.tr<{ light: boolean }>`
-  & input::placeholder,
-  & div[contentEditable='true']:empty:not(:focus):before {
+  & input::placeholder {
     color: ${({ light }) => (light ? 'lightgray' : 'gray')};
   }
 
@@ -22,8 +21,7 @@ const StyledRow = styled.tr<{ light: boolean }>`
 
   @media print {
     display: ${({ light }) => (light ? 'none' : 'auto')};
-    & input::placeholder,
-    & div[contentEditable='true']:empty:not(:focus):before {
+    & input::placeholder {
       color: transparent;
     }
   }

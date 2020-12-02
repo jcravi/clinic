@@ -14,7 +14,7 @@ const OverallDiv = styled.div`
   }
 `;
 
-const labels: Array<string> = ['Name', 'Diagnosis', 'Procedure done'];
+const labels: Array<string> = ['Name', 'Diagnosis', 'Procedure\u202fdone'];
 
 export const App = () => {
   return (
