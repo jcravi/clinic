@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { DailyQuantities } from './DailyQuantities';
+import { Input } from './Input';
+import { MedicineName } from './MedicineName';
 
 const StyledRow = styled.tr<{ light: boolean }>`
   & input::placeholder {
@@ -39,20 +41,6 @@ const SerialColumn = styled.td`
   color: black;
   vertical-align: top;
   text-align: center;
-`;
-
-const Input = styled.input`
-  border: none;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  @media print {
-    &:focus {
-      outline: none;
-    }
-    &::placeholder {
-      color: transparent;
-    }
-  }
 `;
 
 const TextArea = styled.textarea<{ light: boolean }>`
@@ -102,16 +90,7 @@ export const Row = ({ size, index, entered, removed }: RowProps) => {
       <SerialColumn>{index}</SerialColumn>
       <td>
         <div style={{ display: 'flex' }}>
-          <div style={{ flexGrow: 2, textAlign: 'left' }}>
-            <Input
-              style={{ width: '100%' }}
-              type='text'
-              autoComplete='off'
-              placeholder='Medicine Name, Type &amp; Strength'
-              onChange={entered}
-              onBlur={removed}
-            />
-          </div>
+          <MedicineName entered={entered} removed={removed} />
           <div>
             <Input
               style={{ width: '100px' }}

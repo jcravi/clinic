@@ -50,7 +50,7 @@ export const Label = ({ name }: LabelProps) => {
     <div>
       <StyledLabel>
         {name}:&nbsp;
-        <TextArea onInput={onTextAreaInput} />
+        <TextArea onInput={onTextAreaInput} autoFocus={name === 'Name'} />
       </StyledLabel>
     </div>
   );
