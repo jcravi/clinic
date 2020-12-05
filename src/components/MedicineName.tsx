@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { ALL_NAMES } from '../assets/medicine-names';
 
+import { search, SearchResult } from '../js/search';
 import { Input } from './Input';
 
 const AutoCompleteContainer = styled.div`
@@ -20,6 +20,8 @@ const AutoCompleteItems = styled.div`
   top: 100%;
   left: 0;
   right: 0;
+  box-shadow: 0px 3px 10px gray;
+  width: 130%;
   @media print {
     display: none;
   }
@@ -44,7 +46,7 @@ type Props = {
 
 export const MedicineName = ({ entered, removed }: Props) => {
   const [name, setName] = useState('');
-  const [choices, setChoices] = useState<Array<string>>([]);
+  const [choices, setChoices] = useState<Array<SearchResult>>([]);
   const [selected, setSelected] = useState<number>(-1);
   const [hover, setHover] = useState(true);
 
@@ -64,21 +66,18 @@ export const MedicineName = ({ entered, removed }: Props) => {
       setHover(false);
     } else if (key === 'Enter') {
       if (selected >= 0) {
-        setName(choices[selected]);
+        setInput(choices[selected]);
         reset();
       }
     } else if (/[a-z0-9]/i.test(key) || key === 'Backspace') {
       if (name.length > 0) {
-        const names = ALL_NAMES.filter((x) =>
-          x.toLowerCase().includes(name.toLowerCase())
-        ).slice(0, 5);
-
+        const names = search(name).slice(0, 10);
         setChoices(names);
       } else {
         reset();
       }
     } else {
-      console.log('SOMETHING ELSE', key);
+      console.log('SOMETHING ELSE', `"${key}"`);
     }
   };
 
@@ -90,6 +89,10 @@ export const MedicineName = ({ entered, removed }: Props) => {
   const onMouseMove = () => {
     setSelected(-1);
     setHover(true);
+  };
+
+  const setInput = (medicine: SearchResult) => {
+    setName(`${medicine.type} ${medicine.name}`);
   };
 
   return (
@@ -111,18 +114,19 @@ export const MedicineName = ({ entered, removed }: Props) => {
         <AutoCompleteItems>
           {choices.map((choice, index) => {
             const onMouseDown = () => {
-              setName(choice);
+              setInput(choice);
               reset();
             };
             return (
               <AutoCompleteItem
-                key={`${choice}-${index}`}
+                key={`${choice.name}-${choice.type}-${choice.form}-${index}`}
                 highlighted={index === selected}
                 hover={hover}
                 onMouseDown={onMouseDown}
                 onMouseMove={onMouseMove}
               >
-                {choice}
+                {choice.type} {choice.form} {choice.name} {choice.generic}{' '}
+                {choice.score}
               </AutoCompleteItem>
             );
           })}
