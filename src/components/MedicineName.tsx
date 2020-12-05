@@ -125,8 +125,7 @@ export const MedicineName = ({ entered, removed }: Props) => {
                 onMouseDown={onMouseDown}
                 onMouseMove={onMouseMove}
               >
-                {choice.type} {choice.form} {choice.name} {choice.generic}{' '}
-                {choice.score}
+                {choice.type} {choice.form} {choice.name} {choice.generic}
               </AutoCompleteItem>
             );
           })}

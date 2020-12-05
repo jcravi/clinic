@@ -1,0 +1,906 @@
+[
+  {
+    "type": "Antihistamine",
+    "form": "Syrup",
+    "name": "Deriphyllin BM",
+    "generic": "Ambrox+Guaiphenes+Terbutaline",
+    "strength": "",
+    "notes": "Expectorant Bronchitis"
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Syrup",
+    "name": "Ephedrex",
+    "generic": "Ambrox+Guaiphenes+Terbutaline",
+    "strength": "",
+    "notes": "Expectorant Bronchitis"
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Syrup",
+    "name": "Aerodil",
+    "generic": "Ambrox+Guaiphenes+Terbutaline",
+    "strength": "",
+    "notes": "Expectorant Bronchitis"
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Syrup",
+    "name": "Kofarest",
+    "generic": "Ambrox+Guaiphenes+Terbutaline",
+    "strength": "",
+    "notes": "Expectorant Bronchitis"
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Syrup",
+    "name": "Ascoril",
+    "generic": "Ambrox+Guaiphenes+Terbutaline",
+    "strength": "",
+    "notes": "Expectorant Bronchitis"
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Syrup",
+    "name": "IngahistX",
+    "generic": "Bromhex+Guaiph+Terbu+Menthol",
+    "strength": "",
+    "notes": "Expectorant Bronchitis"
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Syrup",
+    "name": "Ventisol",
+    "generic": "Ambro+Guaiph+Terbuta+Menthol",
+    "strength": "",
+    "notes": "Expectorant Bronchitis"
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Syrup",
+    "name": "Hycoril Expectorant",
+    "generic": "Terutaline + Bromexine",
+    "strength": "",
+    "notes": "Expectorant Bronchitis"
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Syrup",
+    "name": "Codylex Expectorant",
+    "generic": "Ambrox+Guaiphenes+Terbutaline",
+    "strength": "",
+    "notes": "Expectorant Bronchitis"
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Syrup",
+    "name": "Codylex PD",
+    "generic": "Ambrox+Guaiphenes+Terbutaline",
+    "strength": "",
+    "notes": "Expectorant Bronchitis"
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Syrup",
+    "name": "Tuspel Plus",
+    "generic": "Ambrox+Terbutaline+Amonium Cl",
+    "strength": "",
+    "notes": "Expectorant Bronchitis"
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Syrup",
+    "name": "Ascoril LS",
+    "generic": "Levosalbutamol + Ambroxil+Guap",
+    "strength": "",
+    "notes": "Expectorant Bronchitis"
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Ingahist",
+    "generic": "Bromoh+Guai+Phenyl+CPM+Para",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Bromhexine",
+    "generic": "Bromhexine",
+    "strength": "8mg",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Syrup",
+    "name": "Bromhexine",
+    "generic": "Bromhexine",
+    "strength": "4mg",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Derripylline retard",
+    "generic": "Theohylline + Etophylline",
+    "strength": "150300450",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Doxolin - M",
+    "generic": "Doxofylline + Montelukast",
+    "strength": "400,10",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Doxovent M",
+    "generic": "Doxofylline + Montelukast",
+    "strength": "400,10",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Doxolin",
+    "generic": "Doxofylline",
+    "strength": "400",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Syrup",
+    "name": "Codylex Linctus",
+    "generic": "Codeine Phos+CPM",
+    "strength": "10,4",
+    "notes": "Dry cough"
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Allercet AX",
+    "generic": "Cetrizine + Ambroxol",
+    "strength": "5,60",
+    "notes": "Expectorant"
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Zyrcold",
+    "generic": "Cetrizine + Ambroxol",
+    "strength": "5,60",
+    "notes": "Expectorant"
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Relent",
+    "generic": "Cetrizine + Ambroxol",
+    "strength": "5,60",
+    "notes": "Expectorant"
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Zyrcold",
+    "generic": "Cetrizine + Ambroxol",
+    "strength": "5,60",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "CAR-OD",
+    "generic": "Levocetzine + Ambroxol",
+    "strength": "",
+    "notes": "Expectorant"
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Lezyncet D",
+    "generic": "Levocetzine + Ambroxol",
+    "strength": "",
+    "notes": "Expectorant"
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Laveta - A",
+    "generic": "Levocetzine + Ambroxol",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Teczine AM",
+    "generic": "Levocetzine + Ambroxol",
+    "strength": "5 ,75",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Alaspan AM",
+    "generic": "Loratidine Ambroxol",
+    "strength": "10.6",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Alerfix Total",
+    "generic": "Monte + Levo + Ambroxil",
+    "strength": "10,5,75",
+    "notes": "Expectorant"
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Odimont AL",
+    "generic": "Monte + Levo + Ambroxil",
+    "strength": "10,5,76",
+    "notes": "Expectorant"
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Odimont",
+    "generic": "Montelukast",
+    "strength": "4,5,10 mg",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Singulair",
+    "generic": "Montelukast",
+    "strength": "4,5,10 mg",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Montair 10",
+    "generic": "Montelukast",
+    "strength": "10mg",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Odimont-FX",
+    "generic": "Montelukast+Fexofenadine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Uniairfx",
+    "generic": "Montelukast+Fexofenadine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Xaria Plus",
+    "generic": "Montelukast+Fexofenadine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Monti - FX",
+    "generic": "Montelukast+Fexofenadine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Lezyncet -M",
+    "generic": "Montelukast+Fexofenadine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Montemac-FX",
+    "generic": "Montelukast+Fexofenadine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Odimont-FX",
+    "generic": "Montelukast+Fexofenadine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "MontiFX",
+    "generic": "Montelukast+Fexofenadine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Odimont-LC",
+    "generic": "Montelukast + Levocetzine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Levocet M",
+    "generic": "Montelukast + Levocetzine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Nukast 10",
+    "generic": "Montelukast + Levocetzine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Uniair L/DT",
+    "generic": "Montelukast + Levocetzine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Alerfix - M",
+    "generic": "Montelukast + Levocetzine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Rhinomax",
+    "generic": "Montelukast + Levocetzine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Montair LC",
+    "generic": "Montelukast + Levocetzine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Romilast L 10",
+    "generic": "Montelukast + Levocetzine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Laveta M",
+    "generic": "Montelukast + Levocetzine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "MTnL",
+    "generic": "Montelukast + Levocetzine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Allerkast",
+    "generic": "Montelukast + Levocetzine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Rhinomont",
+    "generic": "Montelukast + Levocetzine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Xaria",
+    "generic": "Montelukast + Levocetzine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Xyzal M",
+    "generic": "Montelukast + Levocetzine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Montemac-L",
+    "generic": "Montelukast + Levocetzine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Montemac A",
+    "generic": "Montelukast + Acebrophylline(SR)",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Smarti-M",
+    "generic": "Montelukast + Rupatadine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Maxstine M",
+    "generic": "Montelukast + Bilastine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Allercet - L",
+    "generic": "Levocetzine",
+    "strength": "5",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Levocet",
+    "generic": "Levocetzine",
+    "strength": "5",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Allrite",
+    "generic": "Levocetzine",
+    "strength": "5",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Lezyncet",
+    "generic": "Levocetzine",
+    "strength": "5",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Alerfix",
+    "generic": "Levocetzine",
+    "strength": "5",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Elriz",
+    "generic": "Levocetzine",
+    "strength": "5",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Xyzal",
+    "generic": "Levocetzine",
+    "strength": "5",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Laveta",
+    "generic": "Levocetzine",
+    "strength": "5",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Teczine",
+    "generic": "Levocetzine",
+    "strength": "5",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Allercet",
+    "generic": "Cetrizine",
+    "strength": "10",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Deslor",
+    "generic": "Des - Loratidine",
+    "strength": "5",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Lorfast",
+    "generic": "Loratidine",
+    "strength": "10",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Alaspan",
+    "generic": "Loratidine",
+    "strength": "10",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Zyrcold D",
+    "generic": "Levocloperastine Fendizoate",
+    "strength": "5ml/35.4mg",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Syrup",
+    "name": "Aerodil LP",
+    "generic": "Levocloperastine Fendizoate",
+    "strength": "35.4mg/5ml",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Smarti",
+    "generic": "Rupatadine",
+    "strength": "10",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Allenil",
+    "generic": "Olapatadine",
+    "strength": "5",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Levocet D",
+    "generic": "Levocetzine + Phenylephrine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Allrite DC",
+    "generic": "Levocetzine + Phenylephrine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Levorid D",
+    "generic": "Levocetzine + Phenylephrine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Allercet DC",
+    "generic": "Levocetzine + Phenylephrine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Lezyncet D/M/A",
+    "generic": "Levocetzine + Phenylephrine(D)",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Sinarest OD",
+    "generic": "Levocetzine + Phenylephrine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Wikoryl ND",
+    "generic": "Levocetzine + Phenylephrine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Flucozy",
+    "generic": "Levocetzine + Phenylephrine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Yashcold",
+    "generic": "Pheny+CPM+Caffeni+Para",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Wikoryl",
+    "generic": "Pheny+CPM+Caffeni+Para",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Syrup",
+    "name": "Wikoryl",
+    "generic": "Pheny+CPM+Caffeni+Para",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Codylex-CC",
+    "generic": "Cetriz+Para+Caff+Phenylephrine",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Codylex plus",
+    "generic": "Codiene+CPM+Para",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Febrex Plus",
+    "generic": "Para+Phenyl+Chlor+Phenyle",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Sinarest",
+    "generic": "Para+Phenyl+Chlor+Caff",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Wikoryl",
+    "generic": "CPM+Phenylep+Para+Caff",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Nuhist",
+    "generic": "CPM+Phenylep+Para+Caff",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Syr",
+    "name": "Ingahist Plus",
+    "generic": "Dextrome+Phenlep+CPM+Menthol",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Laveta Cold",
+    "generic": "Para+Phenyl+Chlor+Caff",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antihistamine",
+    "form": "Tab",
+    "name": "Cozymin",
+    "generic": "Para+Phenyl+Cetrize",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "",
+    "form": "",
+    "name": "",
+    "generic": "",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Steroids",
+    "form": "Tab",
+    "name": "Caflacort",
+    "generic": "Deflazacort",
+    "strength": "6",
+    "notes": ""
+  },
+  {
+    "type": "Steroids",
+    "form": "Tab/syrup",
+    "name": "Truecort",
+    "generic": "Deflazacort",
+    "strength": "6,30",
+    "notes": ""
+  },
+  {
+    "type": "Steroids",
+    "form": "Tab/susp",
+    "name": "Defcort",
+    "generic": "Deflazacort",
+    "strength": "1,6,12,18,24.30",
+    "notes": ""
+  },
+  {
+    "type": "Steroids",
+    "form": "",
+    "name": "Cortiflaz",
+    "generic": "Deflazacort",
+    "strength": "6,30",
+    "notes": ""
+  },
+  {
+    "type": "Steroids",
+    "form": "Tab",
+    "name": "Defstar",
+    "generic": "Deflazacort",
+    "strength": "6,30",
+    "notes": ""
+  },
+  {
+    "type": "Steroids",
+    "form": "Tab",
+    "name": "Cortimax",
+    "generic": "Deflazacort",
+    "strength": "6,12",
+    "notes": ""
+  },
+  {
+    "type": "Steroids",
+    "form": "Tab",
+    "name": "Dezocort",
+    "generic": "Deflazacort",
+    "strength": "6,30",
+    "notes": ""
+  },
+  {
+    "type": "Steroids",
+    "form": "Tab",
+    "name": "Alzcort",
+    "generic": "Deflazacort",
+    "strength": "6,30",
+    "notes": ""
+  },
+  {
+    "type": "Steroids",
+    "form": "Tab",
+    "name": "Deftor",
+    "generic": "Deflazacort",
+    "strength": "6,30",
+    "notes": ""
+  },
+  {
+    "type": "Steroids",
+    "form": "Tab/susp",
+    "name": "Omnacortil",
+    "generic": "Prednisolone",
+    "strength": "2.5,5,40,30,20",
+    "notes": ""
+  },
+  {
+    "type": "Steroids",
+    "form": "Tab",
+    "name": "Depotex",
+    "generic": "Methylprednisolone",
+    "strength": "4,16mg",
+    "notes": ""
+  },
+  {
+    "type": "",
+    "form": "",
+    "name": "",
+    "generic": "",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Inhalers",
+    "form": "Cap",
+    "name": "Allrite",
+    "generic": "",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Inhalers",
+    "form": "Cap",
+    "name": "Karvol Plus",
+    "generic": "",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Inhalers",
+    "form": "Cap",
+    "name": "Sinarest Vapocaps",
+    "generic": "",
+    "strength": "",
+    "notes": ""
+  }
+]
