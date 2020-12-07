@@ -25,7 +25,7 @@ export const search = (userEntered: string): Array<SearchResult> => {
   const words: Array<string> = val.split(' ');
   const wordsLower = lowerVal.split(' ');
 
-  const rexStr = '.*' + val.split('').join('.+');
+  const rexStr = '.*' + val.split('').join('.*');
 
   const rexCase = new RegExp(rexStr);
   const rex = new RegExp(rexStr, 'i');

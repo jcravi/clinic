@@ -3,16 +3,20 @@ import styled from 'styled-components';
 import { DailyQuantities } from './DailyQuantities';
 import { Input } from './Input';
 import { MedicineName } from './MedicineName';
+import { MiddleColumn, NotesColumn, SerialColumn, TableRow } from './Table';
 
-const StyledRow = styled.tr<{ light: boolean }>`
+const StyledRow = styled(TableRow)<{ light: boolean }>`
   & input::placeholder {
     color: ${({ light }) => (light ? 'lightgray' : 'gray')};
   }
 
-  & td {
+  border-top: 1px solid gray !important;
+  border-bottom: ${({ light }) => (light ? '1px dotted lightgray' : 'none')};
+
+  & > div {
     padding: 0 0 0 0;
-    border: ${({ light }) =>
-      light ? '1px dotted lightgray' : '1px solid gray'};
+    border-color: ${({ light }) => (light ? 'lightgray' : 'gray')};
+    border-style: ${({ light }) => (light ? 'dotted' : 'solid')};
     color: ${({ light }) => (light ? 'lightgray' : 'black')};
   }
 
@@ -23,6 +27,7 @@ const StyledRow = styled.tr<{ light: boolean }>`
 
   @media print {
     display: ${({ light }) => (light ? 'none' : 'auto')};
+    border: none !important;
     & input::placeholder {
       color: transparent;
     }
@@ -31,21 +36,15 @@ const StyledRow = styled.tr<{ light: boolean }>`
 
 const Dosage = styled.div<{ light: boolean }>`
   color: ${({ light }) => (light ? 'lightgray' : 'black')};
+  border-top: 1px ${({ light }) => (light ? 'dotted lightgray' : 'solid gray')} !important;
   @media print {
-    border-top: none;
+    border-top: none !important;
   }
-`;
-
-const SerialColumn = styled.td`
-  width: 20px;
-  color: black;
-  vertical-align: top;
-  text-align: center;
 `;
 
 const TextArea = styled.textarea<{ light: boolean }>`
   vertical-align: top;
-  width: 100px;
+  width: 99px;
   height: 75px;
   border: none;
   overflow: hidden;
@@ -68,6 +67,10 @@ const TextArea = styled.textarea<{ light: boolean }>`
   }
 `;
 
+const NameSection = styled.div<{ light: boolean }>`
+  display: flex;
+`;
+
 type RowProps = {
   size: number;
   index: number;
@@ -88,30 +91,24 @@ export const Row = ({ size, index, entered, removed }: RowProps) => {
   return (
     <StyledRow light={light}>
       <SerialColumn>{index}</SerialColumn>
-      <td>
-        <div style={{ display: 'flex' }}>
+      <MiddleColumn>
+        <NameSection light={light}>
           <MedicineName entered={entered} removed={removed} />
-          <div>
+          <div style={{ width: '101px' }}>
             <Input
               style={{ width: '100px' }}
               type='text'
               placeholder='Quantity'
             />
           </div>
-        </div>
+        </NameSection>
         <Dosage light={light}>
           <DailyQuantities rowIndex={index} light={light} />
         </Dosage>
-      </td>
-      <td
-        style={{
-          width: '100px',
-          verticalAlign: 'top',
-          textAlign: 'left',
-        }}
-      >
+      </MiddleColumn>
+      <NotesColumn>
         <TextArea light={light} placeholder='Notes' onInput={onTextAreaInput} />
-      </td>
+      </NotesColumn>
     </StyledRow>
   );
 };

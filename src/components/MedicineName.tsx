@@ -18,7 +18,7 @@ const AutoCompleteItems = styled.div`
   z-index: 99;
   /*position the autocomplete items to be the same width as the container:*/
   top: 100%;
-  left: 0;
+  left: -20px;
   right: 0;
   box-shadow: 0px 3px 10px gray;
   width: 130%;
@@ -28,6 +28,7 @@ const AutoCompleteItems = styled.div`
 `;
 
 const AutoCompleteItem = styled.div<{ highlighted: boolean; hover: boolean }>`
+  text-align: left !important;
   padding: 3px;
   cursor: pointer;
   background-color: ${({ highlighted }) =>
@@ -36,6 +37,9 @@ const AutoCompleteItem = styled.div<{ highlighted: boolean; hover: boolean }>`
   &:hover {
     background-color: ${({ highlighted, hover }) =>
       hover ? 'lightgray' : highlighted ? 'lightgray' : 'whitesmoke'};
+  }
+  & span {
+    font-style: italic;
   }
 `;
 
@@ -56,7 +60,9 @@ export const MedicineName = ({ entered, removed }: Props) => {
   };
 
   const onKeyUp = ({ key }: React.KeyboardEvent<HTMLInputElement>): void => {
-    if (key === 'ArrowUp') {
+    if (key === 'Escape') {
+      reset();
+    } else if (key === 'ArrowUp') {
       const newSelected = selected <= 0 ? choices.length - 1 : selected - 1;
       setSelected(newSelected);
       setHover(false);
@@ -92,7 +98,7 @@ export const MedicineName = ({ entered, removed }: Props) => {
   };
 
   const setInput = (medicine: SearchResult) => {
-    setName(`${medicine.type} ${medicine.name}`);
+    setName(`${medicine.form} ${medicine.name}`);
   };
 
   return (
@@ -125,7 +131,8 @@ export const MedicineName = ({ entered, removed }: Props) => {
                 onMouseDown={onMouseDown}
                 onMouseMove={onMouseMove}
               >
-                {choice.type} {choice.form} {choice.name} {choice.generic}
+                {choice.type}: {choice.form} {choice.name}{' '}
+                <span>({choice.generic})</span>
               </AutoCompleteItem>
             );
           })}

@@ -83,7 +83,9 @@ export const DailyQuantities = ({ rowIndex, light }: DailyQuantitiesProps) => {
         <Item light={light}>Morning</Item>
         <Item light={light}>Afternoon</Item>
         <Item light={light}>Night</Item>
-        <ItemDate style={{ paddingLeft: '12px' }}>Dates</ItemDate>
+        <ItemDate style={{ paddingLeft: '12px', textAlign: 'left' }}>
+          Dates
+        </ItemDate>
       </Div>
       {Array(dailySize)
         .fill('')
