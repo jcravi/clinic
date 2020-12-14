@@ -9,8 +9,9 @@ const OverallDiv = styled.div`
   padding-top: 50px;
   padding-left: 50px;
   padding-right: 50px;
+  font-size: 17px;
   @media print {
-    padding-top: 75mm;
+    padding-top: 80mm;
   }
 `;
 

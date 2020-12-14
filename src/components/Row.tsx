@@ -28,6 +28,7 @@ const StyledRow = styled(TableRow)<{ light: boolean }>`
   @media print {
     display: ${({ light }) => (light ? 'none' : 'auto')};
     border: none !important;
+    border-top: 1px dotted gray !important;
     & input::placeholder {
       color: transparent;
     }
