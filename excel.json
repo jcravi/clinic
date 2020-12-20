@@ -124,7 +124,7 @@
     "form": "Tab",
     "name": "Derripylline retard",
     "generic": "Theohylline + Etophylline",
-    "strength": "150300450",
+    "strength": "150,300,450",
     "notes": ""
   },
   {
@@ -901,6 +901,982 @@
     "name": "Sinarest Vapocaps",
     "generic": "",
     "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Polypod",
+    "generic": "Cefpodoxime Proxetil",
+    "strength": "50DT, 100DT,200",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Suspension",
+    "name": "Polypod",
+    "generic": "Cefpodoxime Proxetil",
+    "strength": "50mg",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Drops",
+    "name": "Polypod",
+    "generic": "Cefpodoxime Proxetil",
+    "strength": "50mg",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Macpod",
+    "generic": "Cefpodoxime Proxetil",
+    "strength": "50DT, 100DT,200,",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Suspension",
+    "name": "Macpod",
+    "generic": "Cefpodoxime Proxetil",
+    "strength": "50mg",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Drops",
+    "name": "Macpod",
+    "generic": "Cefpodoxime Proxetil",
+    "strength": "50mg",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Polaris 200",
+    "generic": "Cefpodoxime Proxetil",
+    "strength": "200",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Kefpod",
+    "generic": "Cefpodoxime Proxetil",
+    "strength": "100 DT,200",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Oxypod",
+    "generic": "Cefpodoxime Proxetil",
+    "strength": "50,100,200",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Bactogard",
+    "generic": "Cefpodoxime Proxetil",
+    "strength": "100,200",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Metoxim",
+    "generic": "Cefpodoxime Proxetil",
+    "strength": "50,100,200",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Altipod",
+    "generic": "Cefpodoxime Proxetil",
+    "strength": "100DT, 200",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Cepime - O",
+    "generic": "Cefpodoxime Proxetil",
+    "strength": "100DT, 200",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Expodox",
+    "generic": "Cefpodoxime Proxetil",
+    "strength": "100,200",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Microcef",
+    "generic": "Cefpodoxime Proxetil",
+    "strength": "200",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Monocef O",
+    "generic": "Cefpodoxime Proxetil",
+    "strength": "100,200",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "CPOD",
+    "generic": "Cefpodoxime Proxetil",
+    "strength": "100DT, 200",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Omnacefpo",
+    "generic": "Cefpodoxime Proxetil",
+    "strength": "50,100,200",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Macpod",
+    "generic": "Cefpodoxime Proxetil",
+    "strength": "50,100,200",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Zedocef",
+    "generic": "Cefpodoxime Proxetil",
+    "strength": "50,100,200",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Cefoprox",
+    "generic": "Cefpodoxime Proxetil",
+    "strength": "200,125",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Opox",
+    "generic": "Cefpodoxime Proxetil",
+    "strength": "200,100,50",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Cefozyt",
+    "generic": "Cefpodoxime Proxetil",
+    "strength": "200",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Zedocef CV",
+    "generic": "Cefpodxime Proxetil+Clavulanic",
+    "strength": "325",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Cefozyt cv",
+    "generic": "Cefpodxime Proxetil+Clavulanic",
+    "strength": "325",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Cefoprox CV",
+    "generic": "Cefpodxime Proxetil+Clavulanic",
+    "strength": "325",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Macpod CV",
+    "generic": "Cefpodxime Proxetil+Clavulanic",
+    "strength": "325",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Cepime - O CV",
+    "generic": "Cefpodxime Proxetil+Clavulanic",
+    "strength": "325",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Microcef CV",
+    "generic": "Cefpodxime Proxetil+Clavulanic",
+    "strength": "325",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Polypod CV",
+    "generic": "Cefpodxime Proxetil+Clavulanic",
+    "strength": "325",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Bricacef",
+    "generic": "Cefpodxime Proxetil+Clavulanic",
+    "strength": "325",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Bactogard-CV",
+    "generic": "Cefpodxime Proxetil+Clavulanic",
+    "strength": "325",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Forenza",
+    "generic": "Cefpodxime Proxetil+Clavulanic",
+    "strength": "325",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Doxcef CV",
+    "generic": "Cefpodxime Proxetil+Clavulanic",
+    "strength": "325",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Pod Plus",
+    "generic": "Cefpodxime Proxetil+Clavulanic",
+    "strength": "325",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Magnocef",
+    "generic": "Cefpodxime Proxetil+Clavulanic",
+    "strength": "325",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Glevo-pod",
+    "generic": "Cefpodxime Proxetil+Levoflox",
+    "strength": "200+250",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Opox CV",
+    "generic": "Cefpodxime Proxetil+Levoflox",
+    "strength": "200,100,50",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Forenza-Lx",
+    "generic": "Cefpodxime Proxetil+Levoflox",
+    "strength": "200+250",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Droxyl",
+    "generic": "Cefadroxyl",
+    "strength": "250,500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Droxyl Clav",
+    "generic": "Cefadroxyl+Clavulanic",
+    "strength": "250,500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Zithrox",
+    "generic": "Azythromycin",
+    "strength": "500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "ATM",
+    "generic": "Azythromycin",
+    "strength": "250,500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Zithrocin",
+    "generic": "Azythromycin",
+    "strength": "250,500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Suspension",
+    "name": "Zithrocin",
+    "generic": "Azythromycin",
+    "strength": "100,200",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Azitross",
+    "generic": "Azythromycin",
+    "strength": "250,500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "AZ3",
+    "generic": "Azythromycin",
+    "strength": "250,500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Azee",
+    "generic": "Azythromycin",
+    "strength": "250,500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Azifine",
+    "generic": "Azythromycin",
+    "strength": "250,500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Azithral 500",
+    "generic": "Azythromycin",
+    "strength": "500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Azilide",
+    "generic": "Azythromycin",
+    "strength": "250,500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Yashzi",
+    "generic": "Azythromycin",
+    "strength": "250,500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Azithral A",
+    "generic": "Azythromycin+Ambroxyl",
+    "strength": "500+75",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "NuAzy",
+    "generic": "Azythromycin",
+    "strength": "250,500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Azforim",
+    "generic": "Azythromycin",
+    "strength": "250,500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Trulimax",
+    "generic": "Azythromycin",
+    "strength": "250,500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Azitus",
+    "generic": "Azythromycin",
+    "strength": "250,500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Azifine L",
+    "generic": "Azythromycin+Levofloxacin",
+    "strength": "250,500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Azifine C",
+    "generic": "Azythromycin+Cefixime",
+    "strength": "250,500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Zithrox Plis",
+    "generic": "Azythromycin + Cefixime",
+    "strength": "500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Levloc",
+    "generic": "Levofloxacin",
+    "strength": "500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Loxof",
+    "generic": "Levofloxacin",
+    "strength": "250,500,750",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Lufi",
+    "generic": "Levofloxacin",
+    "strength": "250,500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Glevo",
+    "generic": "Levofloxacin",
+    "strength": "250,500,750",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Leon",
+    "generic": "Levofloxacin",
+    "strength": "250,500,750",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Moxicip",
+    "generic": "Moxifloxacin",
+    "strength": "400",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Bilactum-100DT",
+    "generic": "Cefixime",
+    "strength": "100",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Hifen200",
+    "generic": "Cefixime",
+    "strength": "200",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Acufix",
+    "generic": "Cefixime",
+    "strength": "200",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Zofix",
+    "generic": "Cefixime",
+    "strength": "200",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Fixman",
+    "generic": "Cefixime",
+    "strength": "100DT, 200DT",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Indcef",
+    "generic": "Cefixime",
+    "strength": "50, 100,200",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Cefspan",
+    "generic": "Cefixime",
+    "strength": "100DT, 200",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Biotax - O",
+    "generic": "Cefixime",
+    "strength": "200",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Zofix CV",
+    "generic": "Cefixime+ Clavulenic",
+    "strength": "200+175",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Hifen AZ",
+    "generic": "Cefixime + Azithromycin",
+    "strength": "200 + 250",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Covatil",
+    "generic": "Cefuroxime",
+    "strength": "250,500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Ceftum",
+    "generic": "Cefuroxime",
+    "strength": "125,250,500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Zefu",
+    "generic": "Cefuroxime",
+    "strength": "125,250,500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Altacef",
+    "generic": "Cefuroxime",
+    "strength": "125,250,500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Pulmocef and CV",
+    "generic": "Cefuroxime",
+    "strength": "125,250,500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Aksicef",
+    "generic": "Cefuroxime",
+    "strength": "500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Oratil",
+    "generic": "Cefuroxime",
+    "strength": "125,250,500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Cefoxim",
+    "generic": "Cefuroxime",
+    "strength": "250,500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Altacef CV",
+    "generic": "Cefuroxime + Clavulenic",
+    "strength": "250,500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Zefu CV",
+    "generic": "Cefuroxime + Clavulenic",
+    "strength": "250,500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Cefoxim CV",
+    "generic": "Cefuroxime + Clavulenic",
+    "strength": "250,500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Refzil O",
+    "generic": "Cefprozil",
+    "strength": "125,250,500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Cap",
+    "name": "Pulmoclox 500",
+    "generic": "Amoxycillin + Dicloxacillin",
+    "strength": "250 + 250",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Cap",
+    "name": "Suprimox Plus",
+    "generic": "Amoxycillin + Dicloxacillin",
+    "strength": "250 + 250",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Cap",
+    "name": "Bluemox Plus",
+    "generic": "Amoxycillin + cloxacillin",
+    "strength": "250+250",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Advent",
+    "generic": "Amoxycillin + Clav",
+    "strength": "625, 1000",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Augmentin",
+    "generic": "Amoxycillin + Clav",
+    "strength": "625 Duo,375,1000",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "MPX CV",
+    "generic": "Amoxycillin + Clav",
+    "strength": "625 Duo,375,1000",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Moxclav",
+    "generic": "Amoxycillin + Clav",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Myclav",
+    "generic": "Amoxycillin + Clav",
+    "strength": "228.5,375,625",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Curam",
+    "generic": "Amoxycillin + Clav",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Clamox 625",
+    "generic": "Amoxycillin + Clav",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Bactoclav",
+    "generic": "Amoxycillin + Clav",
+    "strength": "",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "FlemiClav",
+    "generic": "Amoxycillin + Clav",
+    "strength": "375,625",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Moxclav",
+    "generic": "Amoxycillin + Clav",
+    "strength": "375,625",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Suspension",
+    "name": "Moxclav",
+    "generic": "Amoxycillin + Clav",
+    "strength": "375",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Marzon",
+    "generic": "Ampicillin +Sultamicillin",
+    "strength": "375",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Marzon DUO",
+    "generic": "Sultamicillin",
+    "strength": "750",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Bactomin",
+    "generic": "Sultamicillin",
+    "strength": "375,750",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Cap",
+    "name": "Lynx 500",
+    "generic": "Lincomycin",
+    "strength": "500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Roxeptin",
+    "generic": "Roxythromycin",
+    "strength": "150,300",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Roxid",
+    "generic": "Roxythromycin",
+    "strength": "150,300,50",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Roxid M",
+    "generic": "Roxythromycin+Ambroxil",
+    "strength": "150+60",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Zoxan",
+    "generic": "Ciprofloxacin",
+    "strength": "250,500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Zinir",
+    "generic": "Cefdinir",
+    "strength": "125,300",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Cap",
+    "name": "Cefrine",
+    "generic": "Cefdinir",
+    "strength": "300",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Cap",
+    "name": "Nudoxy",
+    "generic": "Doxycycline",
+    "strength": "100",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Moxicip",
+    "generic": "Moxifloxacillin",
+    "strength": "400",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Amphy-IBL",
+    "generic": "Amoxycillin + Sulbactam",
+    "strength": "500 + 500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Cap",
+    "name": "Dalacin C",
+    "generic": "Clindamycin",
+    "strength": "150,300",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Cap",
+    "name": "Megapen",
+    "generic": "Ampicillin + Cloxacillin",
+    "strength": "250+250",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Cap",
+    "name": "Megapen XP",
+    "generic": "Ampicillin + Dicloxacillin",
+    "strength": "250+250",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Cap",
+    "name": "Ampilox",
+    "generic": "Ampicillin + Dicloxacillin",
+    "strength": "250+250",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Ampilox DS",
+    "generic": "Ampicillin + Dicloxacillin",
+    "strength": "500+500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Maclar",
+    "generic": "Clarithromycin",
+    "strength": "250,500",
+    "notes": ""
+  },
+  {
+    "type": "Antibiotics",
+    "form": "Tab",
+    "name": "Crixan OD",
+    "generic": "Clarithromycin",
+    "strength": "500",
     "notes": ""
   }
 ]
