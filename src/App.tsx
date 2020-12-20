@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { Chart } from './components/Chart';
 
-import { Label } from './components/Label';
 import { LetterHead } from './components/LetterHead';
-import { Prescription } from './components/Prescription';
 import { PrintButton } from './components/PrintButton';
+import { Sheet } from './components/Sheet';
 
 const OverallDiv = styled.div<{ printLetterHead: boolean }>`
   padding-top: 10px;
@@ -17,10 +17,7 @@ const OverallDiv = styled.div<{ printLetterHead: boolean }>`
   }
 `;
 
-const labels: Array<string> = ['Name', 'Diagnosis', 'Procedure\u202fdone'];
-
 export const App = () => {
-  const date = new Date().toLocaleDateString('en-IN');
   const [printLetterHead, setPrintLetterHead] = useState(false);
   const [print, setPrint] = useState(false);
 
@@ -39,19 +36,8 @@ export const App = () => {
       />
       <LetterHead printLetterHead={printLetterHead} />
       <OverallDiv printLetterHead={printLetterHead}>
-        <div style={{ textAlign: 'right' }}>Date: {date}</div>
-        <div>
-          {labels.map((name) => {
-            return <Label name={name} key={name} />;
-          })}
-        </div>
-        <div style={{ fontSize: '50px' }}>{'\u211E'}</div>
-        <div>
-          <Prescription />
-        </div>
-        <div style={{ paddingTop: '50px' }}>
-          <Label name='Instructions' />
-        </div>
+        {/* <Sheet /> */}
+        <Chart />
       </OverallDiv>
     </>
   );
