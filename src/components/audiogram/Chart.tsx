@@ -11,7 +11,7 @@ import {
   yInc,
   calcX,
   calcY,
-} from '../js/chart-utils';
+} from '../../js/chart-utils';
 
 const Legend = styled.g`
   font-size: 10px;

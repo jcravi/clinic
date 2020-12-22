@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Label } from './Label';
+import { Label } from '../prescription/Label';
 
 const Input = styled.input.attrs((_) => ({
   type: 'text',

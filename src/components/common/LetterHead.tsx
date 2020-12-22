@@ -52,7 +52,7 @@ export const LetterHead = ({
           <div>MBBS, MS(ENT), DORL, PGDHHCM</div>
           <div>Reg. No: 45341</div>
         </div>
-        <div>
+        <div style={{ textAlign: 'right' }}>
           <div>Mon/Wed/Thur/Sat</div>
           <div>10 am to 1 pm</div>
           <div>5 pm to 8 pm</div>

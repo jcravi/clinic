@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 
-import { LetterHead } from './components/LetterHead';
-import { PrintButton } from './components/PrintButton';
-import { Sheet } from './components/Sheet';
-import { Audiogram } from './components/Audiogram';
-import { Common } from './components/Common';
+import { LetterHead } from './components/common/LetterHead';
+import { PrintButton } from './components/common/PrintButton';
+import { Sheet } from './components/prescription/Sheet';
+import { Audiogram } from './components/audiogram/Audiogram';
+import { Common } from './components/common/Common';
 
 const OverallDiv = styled.div<{ printLetterHead: boolean }>`
   padding-top: 10px;
@@ -33,7 +33,7 @@ const Navigator = styled.div`
     padding-bottom: 5px;
   }
   & > div:hover {
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid black;
     padding-bottom: 5px;
   }
   & a {
@@ -57,32 +57,42 @@ export const App = () => {
 
   return (
     <>
-      <PrintButton
-        setPrintLetterHead={setPrintLetterHead}
-        setPrint={setPrint}
-      />
       <LetterHead printLetterHead={printLetterHead} />
       <OverallDiv printLetterHead={printLetterHead}>
         <Common />
         <BrowserRouter>
           <Navigator>
             <div>
-              <Link to='/precriptions'>Prescriptions</Link>
+              <Link to='/'>
+                <div>Clear</div>
+              </Link>
             </div>
             <div>
-              <Link to='/audiogram'>Audiogram</Link>
+              <Link to='/precription'>
+                <div>Prescription</div>
+              </Link>
+            </div>
+            <div>
+              <Link to='/audiogram'>
+                <div>Audiogram</div>
+              </Link>
             </div>
           </Navigator>
           <Switch>
-            <Route path='/precriptions'>
+            <Route path='/precription'>
               <Sheet />
             </Route>
             <Route path='/audiogram'>
               <Audiogram />
             </Route>
+            <Route path='/'>{null}</Route>
           </Switch>
         </BrowserRouter>
       </OverallDiv>
+      <PrintButton
+        setPrintLetterHead={setPrintLetterHead}
+        setPrint={setPrint}
+      />
     </>
   );
 };

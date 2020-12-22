@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import { Chart } from './Chart';
-import { X_AXIS, calcX, calcY } from '../js/chart-utils';
+import { X_AXIS, calcX, calcY } from '../../js/chart-utils';
 
 type StateType = {
   [key: string]: number;
@@ -20,7 +20,7 @@ const Entry = styled.div`
 `;
 
 const Cell = styled.div`
-  width: 55px;
+  width: 60px;
   text-align: center;
   & > input[type='number'] {
     width: 55px;
@@ -30,6 +30,27 @@ const Cell = styled.div`
     &::-webkit-inner-spin-button {
       opacity: 1;
     }
+  }
+`;
+
+const NumberInput = styled.input.attrs((_) => ({
+  type: 'number',
+  placeholder: '0',
+  min: -20,
+  max: 99,
+  step: 5,
+}))`
+  position: relative;
+  width: 100%;
+  border: none;
+  text-align: center;
+  z-index: 1;
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    opacity: 1;
+  }
+  &:focus {
+    z-index: 2;
   }
 `;
 
@@ -128,14 +149,14 @@ export const Audiogram = () => {
             Freq
           </Cell>
           <div>
-            <div style={{ width: '110px', textAlign: 'center' }}>Right</div>
+            <div style={{ width: '120px', textAlign: 'center' }}>Right</div>
             <div style={{ display: 'flex' }}>
               <Cell>Air</Cell>
               <Cell>Bone</Cell>
             </div>
           </div>
           <div>
-            <div style={{ width: '110px', textAlign: 'center' }}>Left</div>
+            <div style={{ width: '120px', textAlign: 'center' }}>Left</div>
             <div style={{ display: 'flex' }}>
               <Cell>Air</Cell>
               <Cell>Bone</Cell>
@@ -162,12 +183,7 @@ export const Audiogram = () => {
             <div key={`div-${o}-${i}`}>
               {X_AXIS.map((x) => (
                 <Cell key={`cell-${o}-${i}-${x}`}>
-                  <input
-                    type='number'
-                    placeholder='0'
-                    min='0'
-                    max='120'
-                    step='5'
+                  <NumberInput
                     onChange={({ target: { value } }) =>
                       setPoint(x, value, o.state, o.setState)
                     }

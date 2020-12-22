@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { search, SearchResult } from '../js/search';
+import { search, SearchResult } from '../../js/search';
 import { Input } from './Input';
 
 const AutoCompleteContainer = styled.div`
