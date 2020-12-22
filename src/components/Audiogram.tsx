@@ -13,6 +13,12 @@ const initialState: StateType = X_AXIS.reduce(
   {}
 );
 
+const Entry = styled.div`
+  @media print {
+    visibility: hidden;
+  }
+`;
+
 const Cell = styled.div`
   width: 55px;
   text-align: center;
@@ -101,8 +107,14 @@ export const Audiogram = () => {
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-      <div>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        paddingTop: '20px',
+      }}
+    >
+      <Entry>
         {/* Header */}
         <div style={{ display: 'flex', borderBottom: '1px solid lightgrey' }}>
           <Cell
@@ -165,7 +177,7 @@ export const Audiogram = () => {
             </div>
           ))}
         </div>
-      </div>
+      </Entry>
       <div>
         <Chart {...ChartProps} />
       </div>

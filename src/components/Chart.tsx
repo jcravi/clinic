@@ -67,14 +67,14 @@ const LeftBone = styled(LeftAir)`
 
 const subAxisStyle = {
   strokeWidth: '1px',
-  stroke: 'grey',
+  stroke: 'darkgrey',
   strokeDasharray: '1',
+  fill: 'none',
 };
 
 const subSubAxisStyle = {
-  strokeWidth: '1px',
+  ...subAxisStyle,
   stroke: 'lightgrey',
-  strokeDasharray: '1',
 };
 
 type GraphType = {
@@ -108,8 +108,8 @@ export const Chart = ({ right, left }: ChartType) => {
         <text x='0' y='10'>
           Right Air
         </text>
-        <line x1='60' y1='7' x2='110' y2='7' stroke='red' />
-        <circle cx='85' cy='7' r='3' fill='white' stroke='red' />
+        <line x1='60' y1='7' x2='110' y2='7' stroke='red' fill='none' />
+        <circle cx='85' cy='7' r='3' stroke='red' fill='white' />
         <text x='0' y='25'>
           Right Bone
         </text>
@@ -120,12 +120,13 @@ export const Chart = ({ right, left }: ChartType) => {
           y2='22'
           stroke='red'
           strokeDasharray='4'
+          fill='none'
         />
-        <circle cx='85' cy='22' r='3' fill='white' stroke='red' />
+        <circle cx='85' cy='22' r='3' stroke='red' fill='white' />
         <text x='150' y='10'>
           Left Air
         </text>
-        <line x1='210' y1='7' x2='260' y2='7' stroke='blue' />
+        <line x1='210' y1='7' x2='260' y2='7' stroke='blue' fill='none' />
         <text
           x='235'
           y='10.5'
@@ -145,6 +146,7 @@ export const Chart = ({ right, left }: ChartType) => {
           y2='22'
           stroke='blue'
           strokeDasharray='4'
+          fill='none'
         />
         <text
           x='235'

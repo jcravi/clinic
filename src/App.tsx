@@ -39,6 +39,9 @@ const Navigator = styled.div`
   & a {
     text-decoration: none;
   }
+  @media print {
+    display: none;
+  }
 `;
 
 export const App = () => {

@@ -3,7 +3,7 @@ import React from 'react';
 import { Label } from './Label';
 import { Prescription } from './Prescription';
 
-const labels: Array<string> = ['Name', 'Diagnosis', 'Procedure\u202fdone'];
+const labels: Array<string> = ['Diagnosis', 'Procedure\u202fdone'];
 
 export const Sheet = () => {
   return (
