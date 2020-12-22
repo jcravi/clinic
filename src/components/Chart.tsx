@@ -1,42 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-const HEIGHT = 250;
-const WIDTH = 350;
+import {
+  X_AXIS,
+  Y_AXIS,
+  width,
+  height,
+  offset,
+  xInc,
+  yInc,
+  calcX,
+  calcY,
+} from '../js/chart-utils';
 
-const offset: number = 20;
-
-const Y_AXIS = [
-  '-10',
-  '0',
-  '10',
-  '20',
-  '30',
-  '40',
-  '50',
-  '60',
-  '70',
-  '80',
-  '90',
-];
-
-const X_AXIS = ['125', '250', '500', '100', '2000', '4000', '8000'];
-
-const xInc = (WIDTH - 2 * offset) / X_AXIS.length;
-const yInc = (HEIGHT - 2 * offset) / Y_AXIS.length;
-
-type StateType = {
-  [key: string]: number;
-};
-
-const initialState: StateType = X_AXIS.reduce(
-  (o, key) => ({ ...o, [key]: -1 }),
-  {}
-);
-
-const SVG = styled.svg`
-  height: ${HEIGHT}px;
-  width: ${WIDTH}px;
+const Legend = styled.g`
+  font-size: 10px;
+  & > text {
+  }
 `;
 
 const Axis = styled.g`
@@ -45,11 +25,15 @@ const Axis = styled.g`
   }
 `;
 
-const AxisLabels = styled.g`
+const AxisTitle = styled.g`
   font-size: 12px;
 `;
 
-const Right = styled.g`
+const AxisLabel = styled.g`
+  font-size: 14px;
+`;
+
+const RightAir = styled.g`
   & > circle {
     fill: none;
     stroke: red;
@@ -59,7 +43,14 @@ const Right = styled.g`
   }
 `;
 
-const Left = styled.g`
+const RightBone = styled(RightAir)`
+  & > polyline {
+    stroke-dasharray: 5;
+  }
+`;
+
+const LeftAir = styled.g`
+  font: bold 15px arial;
   & > text {
     fill: blue;
   }
@@ -68,219 +59,243 @@ const Left = styled.g`
   }
 `;
 
-const NumberInput = styled.input.attrs((_) => ({
-  type: 'number',
-  placeholder: '0',
-  min: -10,
-  max: 120,
-  step: 5,
-}))`
-  width: 55px;
-  border: none;
-  text-align: center;
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    opacity: 1;
+const LeftBone = styled(LeftAir)`
+  & > polyline {
+    stroke-dasharray: 5;
   }
 `;
 
-const calcX = (index: number): number => {
-  return offset + (index + 1) * xInc;
-};
-
-const calcY = (value: number): number => {
-  return HEIGHT - offset - ((value / 5) * yInc) / 2;
-};
-
 const subAxisStyle = {
+  strokeWidth: '1px',
+  stroke: 'grey',
+  strokeDasharray: '1',
+};
+
+const subSubAxisStyle = {
   strokeWidth: '1px',
   stroke: 'lightgrey',
   strokeDasharray: '1',
 };
 
-export const Chart = () => {
-  const [right, setRight] = useState(initialState);
-  const [rightPoints, setRightPoints] = useState('');
-  const setRightValue = (key: string, valueStr: string) => {
-    const value = +valueStr;
-    setRight({ ...right, [key]: value });
+type GraphType = {
+  points: {
+    [key: string]: number;
   };
-  useEffect(() => {
-    const points = X_AXIS.reduce((s, v, i) => {
-      if (right[v] !== -1) {
-        const cx = calcX(i);
-        const cy = calcY(right[v]);
-        return s + ' ' + cx + ',' + cy;
-      } else {
-        return s;
-      }
-    }, '');
+  pointLine: string;
+};
 
-    setRightPoints(points);
-  }, [right]);
+type SideType = {
+  air: GraphType;
+  bone: GraphType;
+};
 
-  const [left, setLeft] = useState(initialState);
-  const [leftPoints, setLeftPoints] = useState('');
-  const setLeftValue = (key: string, valueStr: string) => {
-    const value = +valueStr;
-    setLeft({ ...left, [key]: value });
-  };
-  useEffect(() => {
-    const points = X_AXIS.reduce((s, v, i) => {
-      if (left[v] !== -1) {
-        const cx = calcX(i);
-        const cy = calcY(left[v]);
-        return s + ' ' + cx + ',' + cy;
-      } else {
-        return s;
-      }
-    }, '');
+type ChartType = {
+  right: SideType;
+  left: SideType;
+};
 
-    setLeftPoints(points);
-  }, [left]);
-
+export const Chart = ({ right, left }: ChartType) => {
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-      <div>
-        <div style={{ display: 'flex', borderBottom: '1px solid lightgrey' }}>
-          <div
-            style={{
-              float: 'left',
-              width: '50px',
-              textAlign: 'right',
-              borderRight: '1px solid lightgrey',
-              paddingRight: '5px',
-            }}
-          >
-            Freq
-          </div>
-          <div style={{ width: '55px', textAlign: 'center' }}>Right</div>
-          <div style={{ width: '55px', textAlign: 'center' }}>Left</div>
-        </div>
-        <div style={{ display: 'flex' }}>
-          <div
-            style={{
-              width: '50px',
-              borderRight: '1px solid lightgrey',
-              paddingRight: '5px',
-            }}
-          >
-            {X_AXIS.map((x) => {
-              return (
-                <div
-                  key={x}
-                  style={{
-                    height: '27px',
-                    textAlign: 'right',
-                  }}
-                >
-                  {x}
-                </div>
-              );
-            })}
-          </div>
-          <div>
-            {X_AXIS.map((x) => {
-              return (
-                <div key={x}>
-                  <NumberInput
-                    onChange={({ target: { value } }) =>
-                      setRightValue(x, value)
-                    }
-                  />
-                </div>
-              );
-            })}
-          </div>
-          <div>
-            {X_AXIS.map((x) => {
-              return (
-                <div key={x}>
-                  <NumberInput
-                    onChange={({ target: { value } }) => setLeftValue(x, value)}
-                  />
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-      <div>
-        <SVG version='1.2' role='img'>
-          <Axis>
-            {X_AXIS.map((key, index) => {
-              const x = offset + (index + 1) * xInc;
-              return (
-                <line
-                  key={key}
-                  style={subAxisStyle}
-                  x1={x}
-                  y1={offset}
-                  x2={x}
-                  y2={HEIGHT - offset}
-                />
-              );
-            })}
-            {Y_AXIS.map((key, index) => {
-              const y = HEIGHT - offset - (index + 1) * yInc;
-              return (
-                <line
-                  key={key}
-                  style={subAxisStyle}
-                  x1={offset}
-                  y1={y}
-                  x2={WIDTH - offset}
-                  y2={y}
-                />
-              );
-            })}
-
-            <line x1={offset} y1={offset} x2={offset} y2={HEIGHT - offset} />
+    <svg
+      version='1.2'
+      role='img'
+      style={{
+        height: `${height}`,
+        width: `${width}`,
+      }}
+    >
+      <Legend transform='translate(50,5)'>
+        <text x='0' y='10'>
+          Right Air
+        </text>
+        <line x1='60' y1='7' x2='110' y2='7' stroke='red' />
+        <circle cx='85' cy='7' r='3' fill='white' stroke='red' />
+        <text x='0' y='25'>
+          Right Bone
+        </text>
+        <line
+          x1='60'
+          y1='22'
+          x2='110'
+          y2='22'
+          stroke='red'
+          strokeDasharray='4'
+        />
+        <circle cx='85' cy='22' r='3' fill='white' stroke='red' />
+        <text x='150' y='10'>
+          Left Air
+        </text>
+        <line x1='210' y1='7' x2='260' y2='7' stroke='blue' />
+        <text
+          x='235'
+          y='10.5'
+          style={{ font: 'bold 15px arial', color: 'blue' }}
+          fill='blue'
+          textAnchor='middle'
+        >
+          x
+        </text>
+        <text x='150' y='25'>
+          Left Bone
+        </text>
+        <line
+          x1='210'
+          y1='22'
+          x2='260'
+          y2='22'
+          stroke='blue'
+          strokeDasharray='4'
+        />
+        <text
+          x='235'
+          y='25.5'
+          style={{ font: 'bold 15px arial', color: 'blue' }}
+          fill='blue'
+          textAnchor='middle'
+        >
+          x
+        </text>
+      </Legend>
+      <Axis>
+        {/* X Axis Helpers */}
+        {X_AXIS.map((key, index) => {
+          const x = offset + (index + 1) * xInc;
+          return (
             <line
-              x1={offset}
-              y1={HEIGHT - offset}
-              x2={WIDTH - offset}
-              y2={HEIGHT - offset}
+              key={key}
+              style={subAxisStyle}
+              x1={x}
+              y1={offset}
+              x2={x}
+              y2={height - offset}
             />
-          </Axis>
-          <AxisLabels>
-            <text
-              x={offset - 2}
-              y={HEIGHT / 2}
-              transform={`rotate(-90, ${offset - 2}, ${
-                HEIGHT / 2
-              }) translate(-60, -2)`}
-            >
-              Hearing Level (db HL)
+          );
+        })}
+        {X_AXIS.map((key, index) => {
+          const x = offset + (index + 1) * xInc - xInc / 2;
+          return (
+            <line
+              key={key}
+              style={subSubAxisStyle}
+              x1={x}
+              y1={offset}
+              x2={x}
+              y2={height - offset}
+            />
+          );
+        })}
+        {/* Y Axis Helpers */}
+        {Y_AXIS.map((key, index) => {
+          const y = height - offset - (index + 1) * yInc;
+          return index !== Y_AXIS.length - 1 ? (
+            <line
+              key={key}
+              style={subAxisStyle}
+              x1={offset}
+              y1={y}
+              x2={width - offset}
+              y2={y}
+            />
+          ) : null;
+        })}
+        {Y_AXIS.map((key, index) => {
+          const y = height - offset - (index + 1) * yInc + yInc / 2;
+          return index !== Y_AXIS.length - 1 ? (
+            <line
+              key={key}
+              style={subSubAxisStyle}
+              x1={offset}
+              y1={y}
+              x2={width - offset}
+              y2={y}
+            />
+          ) : null;
+        })}
+        {/* X Axis */}
+        <line
+          x1={offset}
+          y1={height - offset}
+          x2={width - offset}
+          y2={height - offset}
+        />
+        {/* Y Axis */}
+        <line x1={offset} y1={offset} x2={offset} y2={height - offset} />
+      </Axis>
+      <AxisLabel>
+        {X_AXIS.map((key, index) => {
+          const x = offset + (index + 1) * xInc;
+          return (
+            <text key={key} x={x} y={height - offset + 13} textAnchor='middle'>
+              {key}
             </text>
-            <text x={WIDTH / 2 - 40} y={HEIGHT - offset + 15}>
-              Frequency
+          );
+        })}
+        {Y_AXIS.map((key, index) => {
+          const y = height - offset - index * yInc + 4;
+          return (
+            <text key={key} x={offset - 4} y={y} textAnchor='end'>
+              {key}
             </text>
-          </AxisLabels>
-          <Right>
-            {X_AXIS.map((x, index) => {
-              const cx = calcX(index);
-              const cy = calcY(right[x]);
-              return right[x] === -1 ? null : (
-                <circle key={x} cx={cx} cy={cy} r='3' />
-              );
-            })}
-            <polyline fill='none' points={rightPoints} />
-          </Right>
-          <Left>
-            {X_AXIS.map((x, index) => {
-              const cx = calcX(index) - 4;
-              const cy = calcY(left[x]) + 4;
-              return left[x] === -1 ? null : (
-                <text key={x} x={cx} y={cy}>
-                  x
-                </text>
-              );
-            })}
-            <polyline fill='none' points={leftPoints} />
-          </Left>
-        </SVG>
-      </div>
-    </div>
+          );
+        })}
+      </AxisLabel>
+      <AxisTitle>
+        <text
+          x={offset - 25}
+          y={height / 2}
+          textAnchor='middle'
+          transform={`rotate(-90, ${offset - 25}, ${height / 2})`}
+        >
+          Intensity (db)
+        </text>
+        <text x={width / 2} y={height - offset + 30} textAnchor='middle'>
+          Frequency (Hz)
+        </text>
+      </AxisTitle>
+      <RightAir>
+        {X_AXIS.map((x, index) => {
+          const cx = calcX(index);
+          const cy = calcY(right.air.points[x]);
+          return right.air.points[x] === -1 ? null : (
+            <circle key={x} cx={cx} cy={cy} r='3' />
+          );
+        })}
+        <polyline fill='none' points={right.air.pointLine} />
+      </RightAir>
+      <RightBone>
+        {X_AXIS.map((x, index) => {
+          const cx = calcX(index);
+          const cy = calcY(right.bone.points[x]);
+          return right.bone.points[x] === -1 ? null : (
+            <circle key={x} cx={cx} cy={cy} r='3' />
+          );
+        })}
+        <polyline fill='none' points={right.bone.pointLine} />
+      </RightBone>
+      <LeftAir>
+        {X_AXIS.map((x, index) => {
+          const cx = calcX(index);
+          const cy = calcY(left.air.points[x]) + 4.5;
+          return left.air.points[x] === -1 ? null : (
+            <text key={x} x={cx} y={cy} textAnchor='middle'>
+              x
+            </text>
+          );
+        })}
+        <polyline fill='none' points={left.air.pointLine} />
+      </LeftAir>
+      <LeftBone>
+        {X_AXIS.map((x, index) => {
+          const cx = calcX(index);
+          const cy = calcY(left.bone.points[x]) + 4.5;
+          return left.bone.points[x] === -1 ? null : (
+            <text key={x} x={cx} y={cy} textAnchor='middle'>
+              x
+            </text>
+          );
+        })}
+        <polyline fill='none' points={left.bone.pointLine} />
+      </LeftBone>
+    </svg>
   );
 };

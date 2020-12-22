@@ -6,10 +6,8 @@ import { Prescription } from './Prescription';
 const labels: Array<string> = ['Name', 'Diagnosis', 'Procedure\u202fdone'];
 
 export const Sheet = () => {
-  const date = new Date().toLocaleDateString('en-IN');
   return (
     <>
-      <div style={{ textAlign: 'right' }}>Date: {date}</div>
       <div>
         {labels.map((name) => {
           return <Label name={name} key={name} />;
