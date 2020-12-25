@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Label } from './Label';
+import { Label } from '../common/Label';
 import { Prescription } from './Prescription';
 
 const labels: Array<string> = ['Diagnosis', 'Procedure\u202fdone'];

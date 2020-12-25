@@ -29,15 +29,18 @@ const Navigator = styled.div`
   background-color: white;
   padding: 10px;
   & > div {
-    border-bottom: 1px dashed grey;
+    border-bottom: 1px dashed blue;
     padding-bottom: 5px;
   }
   & > div:hover {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid blue;
     padding-bottom: 5px;
   }
   & a {
     text-decoration: none;
+  }
+  & a:visited {
+    color: blue;
   }
   @media print {
     display: none;

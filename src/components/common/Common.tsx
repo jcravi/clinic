@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { Label } from '../prescription/Label';
+import { StyledLabel } from './CommonComponents';
+import { Label } from './Label';
 
 const Input = styled.input.attrs((_) => ({
   type: 'text',
@@ -46,13 +47,17 @@ const Top = styled.div`
 type StateType = {
   fileNo: string;
   opdNo: string;
-  Name: string;
+  name: string;
+  ageSex: string;
+  Address: string;
 };
 
 const initState: StateType = {
   fileNo: '',
   opdNo: '',
-  Name: '',
+  name: '',
+  ageSex: '',
+  Address: '',
 };
 
 type CommonProps = {
@@ -94,8 +99,31 @@ export const Common = ({ clear }: CommonProps) => {
         </div>
         <div>Date: {date}</div>
       </Top>
+      <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+        <StyledLabel style={{ width: '100%' }}>
+          Name:&nbsp;
+          <Input
+            maxLength={65}
+            autoComplete='off'
+            style={{ width: '100%' }}
+            name='name'
+            value={state.name}
+            onChange={onChange}
+          />
+        </StyledLabel>
+        <StyledLabel>
+          Age/Sex:&nbsp;
+          <Input
+            maxLength={7}
+            style={{ width: '70px' }}
+            name='ageSex'
+            value={state.ageSex}
+            onChange={onChange}
+          />
+        </StyledLabel>
+      </div>
       <div>
-        <Label name='Name' value={state.Name} onChange={onChange} />
+        <Label name='Address' value={state.Address} onChange={onChange} />
       </div>
     </>
   );
