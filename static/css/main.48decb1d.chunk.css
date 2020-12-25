@@ -1,2 +1,0 @@
-.sheet,body{margin:0}.sheet{overflow:hidden;position:relative;box-sizing:border-box;page-break-after:always}body.A4 .sheet{width:210mm;height:296mm}.sheet.padding-10mm{padding:10mm}.sheet.padding-15mm{padding:15mm}.sheet.padding-20mm{padding:20mm}.sheet.padding-25mm{padding:25mm}@media screen{body{background:#e0e0e0}.sheet{background:#fff;box-shadow:0 .5mm 2mm rgba(0,0,0,.3);margin:5mm auto}}@media print{body.A4{width:210mm}@page{size:A4;margin:0}}
-/*# sourceMappingURL=main.48decb1d.chunk.css.map */
