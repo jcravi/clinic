@@ -5,12 +5,13 @@ const StyledLabel = styled.label`
   font-weight: bold;
   display: flex;
   align-items: flex-start;
+  line-height: inherit;
 `;
 
 const TextArea = styled.textarea`
   vertical-align: top;
   width: 100%;
-  height: 26px;
+  height: 27px;
   border: none;
   border-bottom: 1px dotted gray;
   overflow: hidden;
@@ -37,20 +38,29 @@ const TextArea = styled.textarea`
 
 type LabelProps = {
   name: string;
+  value?: string;
+  onChange?: (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
 };
 
-export const Label = ({ name }: LabelProps) => {
+export const Label = ({ name, value, onChange }: LabelProps) => {
   const onTextAreaInput = ({
     currentTarget,
   }: React.FormEvent<HTMLTextAreaElement>) => {
-    currentTarget.style.height = '26px';
+    currentTarget.style.height = '27px';
     currentTarget.style.height = `${currentTarget.scrollHeight}px`;
   };
   return (
     <div>
       <StyledLabel>
         {name}:&nbsp;
-        <TextArea onInput={onTextAreaInput} />
+        <TextArea
+          name={name}
+          onInput={onTextAreaInput}
+          onChange={onChange}
+          value={value}
+        />
       </StyledLabel>
     </div>
   );

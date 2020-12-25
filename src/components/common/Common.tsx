@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Label } from '../prescription/Label';
 
@@ -43,25 +43,59 @@ const Top = styled.div`
   }
 `;
 
-export const Common = () => {
+type StateType = {
+  fileNo: string;
+  opdNo: string;
+  Name: string;
+};
+
+const initState: StateType = {
+  fileNo: '',
+  opdNo: '',
+  Name: '',
+};
+
+type CommonProps = {
+  clear: boolean;
+};
+
+export const Common = ({ clear }: CommonProps) => {
   const date = new Date().toLocaleDateString('en-IN');
+
+  const [state, setState] = useState(initState);
+
+  useEffect(() => {
+    if (clear) {
+      setState(initState);
+    }
+  }, [clear]);
+
+  const onChange = ({
+    target: { name, value },
+  }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const newState = { ...state, [name]: value } as StateType;
+    setState(newState);
+  };
+
   return (
     <>
       <Top>
         <div>
           <label>
-            File No: <Input />
+            File No:{' '}
+            <Input name='fileNo' value={state.fileNo} onChange={onChange} />
           </label>
         </div>
         <div>
           <label>
-            OPD No: <Input />
+            OPD No:{' '}
+            <Input name='opdNo' value={state.opdNo} onChange={onChange} />
           </label>
         </div>
         <div>Date: {date}</div>
       </Top>
       <div>
-        <Label name='Name' />
+        <Label name='Name' value={state.Name} onChange={onChange} />
       </div>
     </>
   );

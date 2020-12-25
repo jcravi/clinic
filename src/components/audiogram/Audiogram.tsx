@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import { Chart } from './Chart';
-import { X_AXIS, calcX, calcY } from '../../js/chart-utils';
+import { X_AXIS, calcX, calcY, DEFAULT } from '../../js/chart-utils';
 
 type StateType = {
   [key: string]: number;
 };
 
 const initialState: StateType = X_AXIS.reduce(
-  (o, key) => ({ ...o, [key]: -1 }),
+  (o, key) => ({ ...o, [key]: DEFAULT }),
   {}
 );
 
@@ -40,6 +40,8 @@ const NumberInput = styled.input.attrs((_) => ({
   max: 99,
   step: 5,
 }))`
+  font-size: 17px;
+  line-height: inherit;
   position: relative;
   width: 100%;
   border: none;
@@ -59,7 +61,7 @@ const setPointLine = (
   setState: (value: React.SetStateAction<string>) => void
 ): void => {
   const points = X_AXIS.reduce((acc, curr, index) => {
-    if (state[curr] >= 0) {
+    if (state[curr] > DEFAULT) {
       const cx = calcX(index);
       const cy = calcY(state[curr]);
       return acc + ' ' + cx + ',' + cy;

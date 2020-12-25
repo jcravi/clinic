@@ -11,6 +11,7 @@ import {
   yInc,
   calcX,
   calcY,
+  DEFAULT,
 } from '../../js/chart-utils';
 
 const Legend = styled.g`
@@ -35,11 +36,12 @@ const AxisLabel = styled.g`
 
 const RightAir = styled.g`
   & > circle {
-    fill: none;
+    fill: white;
     stroke: red;
   }
   & > polyline {
     stroke: red;
+    fill: none;
   }
 `;
 
@@ -103,6 +105,7 @@ export const Chart = ({ right, left }: ChartType) => {
         height: `${height}`,
         width: `${width}`,
       }}
+      transform='translate(20,0)'
     >
       <Legend transform='translate(50,5)'>
         <text x='0' y='10'>
@@ -159,7 +162,7 @@ export const Chart = ({ right, left }: ChartType) => {
         </text>
       </Legend>
       <Axis>
-        {/* X Axis Helpers */}
+        {/* Y Axis Helpers */}
         {X_AXIS.map((key, index) => {
           const x = offset + (index + 1) * xInc;
           return (
@@ -186,7 +189,7 @@ export const Chart = ({ right, left }: ChartType) => {
             />
           );
         })}
-        {/* Y Axis Helpers */}
+        {/* X Axis Helpers */}
         {Y_AXIS.map((key, index) => {
           const y = height - offset - (index + 1) * yInc;
           return index !== Y_AXIS.length - 1 ? (
@@ -255,30 +258,30 @@ export const Chart = ({ right, left }: ChartType) => {
         </text>
       </AxisTitle>
       <RightAir>
+        <polyline points={right.air.pointLine} />
         {X_AXIS.map((x, index) => {
           const cx = calcX(index);
           const cy = calcY(right.air.points[x]);
-          return right.air.points[x] === -1 ? null : (
+          return right.air.points[x] === DEFAULT ? null : (
             <circle key={x} cx={cx} cy={cy} r='3' />
           );
         })}
-        <polyline fill='none' points={right.air.pointLine} />
       </RightAir>
       <RightBone>
+        <polyline points={right.bone.pointLine} />
         {X_AXIS.map((x, index) => {
           const cx = calcX(index);
           const cy = calcY(right.bone.points[x]);
-          return right.bone.points[x] === -1 ? null : (
+          return right.bone.points[x] === DEFAULT ? null : (
             <circle key={x} cx={cx} cy={cy} r='3' />
           );
         })}
-        <polyline fill='none' points={right.bone.pointLine} />
       </RightBone>
       <LeftAir>
         {X_AXIS.map((x, index) => {
           const cx = calcX(index);
           const cy = calcY(left.air.points[x]) + 4.5;
-          return left.air.points[x] === -1 ? null : (
+          return left.air.points[x] === DEFAULT ? null : (
             <text key={x} x={cx} y={cy} textAnchor='middle'>
               x
             </text>
@@ -290,7 +293,7 @@ export const Chart = ({ right, left }: ChartType) => {
         {X_AXIS.map((x, index) => {
           const cx = calcX(index);
           const cy = calcY(left.bone.points[x]) + 4.5;
-          return left.bone.points[x] === -1 ? null : (
+          return left.bone.points[x] === DEFAULT ? null : (
             <text key={x} x={cx} y={cy} textAnchor='middle'>
               x
             </text>

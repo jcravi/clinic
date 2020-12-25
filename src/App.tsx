@@ -48,6 +48,8 @@ export const App = () => {
   const [printLetterHead, setPrintLetterHead] = useState(false);
   const [print, setPrint] = useState(false);
 
+  const [clear, setClear] = useState(false);
+
   useEffect(() => {
     if (print) {
       setPrint(false);
@@ -55,15 +57,21 @@ export const App = () => {
     }
   }, [print]);
 
+  useEffect(() => {
+    if (clear) {
+      setClear(false);
+    }
+  }, [clear]);
+
   return (
     <>
       <LetterHead printLetterHead={printLetterHead} />
       <OverallDiv printLetterHead={printLetterHead}>
-        <Common />
+        <Common clear={clear} />
         <BrowserRouter>
           <Navigator>
             <div>
-              <Link to='/'>
+              <Link to='/' onClick={() => setClear(true)}>
                 <div>Clear</div>
               </Link>
             </div>
