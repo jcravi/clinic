@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import { LetterHead } from './components/common/LetterHead';
 import { PrintButton } from './components/common/PrintButton';
 import { Sheet } from './components/prescription/Sheet';
 import { Audiogram } from './components/audiogram/Audiogram';
 import { Common } from './components/common/Common';
+
+import { StateInterface } from './interfaces';
+import { clear } from './actions/index';
 
 const OverallDiv = styled.div<{ printLetterHead: boolean }>`
   padding-top: 10px;
@@ -47,34 +51,19 @@ const Navigator = styled.div`
   }
 `;
 
-export const App = () => {
-  const [printLetterHead, setPrintLetterHead] = useState(false);
-  const [print, setPrint] = useState(false);
-
-  const [clear, setClear] = useState(false);
-
-  useEffect(() => {
-    if (print) {
-      setPrint(false);
-      window.print();
-    }
-  }, [print]);
-
-  useEffect(() => {
-    if (clear) {
-      setClear(false);
-    }
-  }, [clear]);
-
+const AppComponent = ({
+  printLetterHead,
+  clear,
+}: ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps) => {
   return (
     <>
-      <LetterHead printLetterHead={printLetterHead} />
+      <LetterHead />
       <OverallDiv printLetterHead={printLetterHead}>
-        <Common clear={clear} />
+        <Common />
         <BrowserRouter>
           <Navigator>
             <div>
-              <Link to='/' onClick={() => setClear(true)}>
+              <Link to='/' onClick={clear}>
                 <div>Clear</div>
               </Link>
             </div>
@@ -100,10 +89,17 @@ export const App = () => {
           </Switch>
         </BrowserRouter>
       </OverallDiv>
-      <PrintButton
-        setPrintLetterHead={setPrintLetterHead}
-        setPrint={setPrint}
-      />
+      <PrintButton />
     </>
   );
 };
+
+const mapStateToProps = ({ letterHead: { print } }: StateInterface) => ({
+  printLetterHead: print,
+});
+
+const mapDispatchToProps = {
+  clear,
+};
+
+export const App = connect(mapStateToProps, mapDispatchToProps)(AppComponent);

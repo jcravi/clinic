@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useState } from 'react';
 import styled from 'styled-components';
+import { IDailyDosage } from '../../interfaces';
 
 const Div = styled.div<{ light: boolean }>`
   display: flex;
@@ -43,6 +44,11 @@ const NumberInput = styled.input.attrs((_) => ({
 const DateInput = styled.input`
   width: 100%;
   border: none;
+  position: relative;
+  z-index: 1;
+  &:focus {
+    z-index: 2;
+  }
   @media print {
     &:focus {
       outline: none;
@@ -73,10 +79,20 @@ const ItemDate = styled.div`
 type DailyQuantitiesProps = {
   rowIndex: number;
   light: boolean;
+  dosages: Array<IDailyDosage>;
+  onDosageChange: (index: number, name: string, value: string) => void;
+  addDosage: () => void;
+  removeDosage: () => void;
 };
 
-export const DailyQuantities = ({ rowIndex, light }: DailyQuantitiesProps) => {
-  const [dailySize, setDailySize] = useState(1);
+export const DailyQuantities = ({
+  rowIndex,
+  light,
+  dosages,
+  onDosageChange,
+  addDosage,
+  removeDosage,
+}: DailyQuantitiesProps) => {
   return (
     <>
       <Div light={light}>
@@ -87,46 +103,58 @@ export const DailyQuantities = ({ rowIndex, light }: DailyQuantitiesProps) => {
           Dates
         </ItemDate>
       </Div>
-      {Array(dailySize)
-        .fill('')
-        .map((_, i) => {
-          const changedDates = ({
-            target: { value },
-          }: React.ChangeEvent<HTMLInputElement>) => {
-            if (i === dailySize - 1 && value.length !== 0) {
-              setDailySize(dailySize + 1);
-            }
-          };
-          const removedDate = ({
-            target: { value },
-          }: React.ChangeEvent<HTMLInputElement>) => {
-            if (i !== dailySize - 1 && value.length === 0) {
-              setDailySize(dailySize - 1);
-            }
-          };
-          return (
-            <DailyQuantityRow
-              key={`daily-${rowIndex}-${i}`}
-              light={light}
-              changedDates={changedDates}
-              removedDate={removedDate}
-            />
-          );
-        })}
+      {dosages.map((_, i) => {
+        const changedDates = ({
+          target: { value },
+        }: React.ChangeEvent<HTMLInputElement>) => {
+          if (i === dosages.length - 1 && value.length !== 0) {
+            addDosage();
+          }
+        };
+        const removedDate = ({
+          target: { value },
+        }: React.ChangeEvent<HTMLInputElement>) => {
+          if (i !== dosages.length - 1 && value.length === 0) {
+            removeDosage();
+          }
+        };
+
+        const onChange = ({
+          target: { name, value },
+        }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+          onDosageChange(i, name as keyof IDailyDosage, value);
+        };
+        return (
+          <DailyQuantityRow
+            key={`daily-${rowIndex}-${i}`}
+            light={light}
+            dosage={dosages[i]}
+            changedDates={changedDates}
+            removedDate={removedDate}
+            onChange={onChange}
+          />
+        );
+      })}
     </>
   );
 };
 
 type DailyQuantityRowProps = {
   light: boolean;
+  dosage: IDailyDosage;
   changedDates: (event: React.ChangeEvent<HTMLInputElement>) => void;
   removedDate: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
 };
 
 const DailyQuantityRow = ({
   light,
   changedDates,
   removedDate,
+  dosage,
+  onChange,
 }: DailyQuantityRowProps) => {
   const timeOfDay = ['Morning', 'Afternoon', 'Night'].map((time) => ({
     time,
@@ -134,12 +162,19 @@ const DailyQuantityRow = ({
   }));
   const [times, setTimes] = useState(timeOfDay);
 
+  const onChangeDates = (event: React.ChangeEvent<HTMLInputElement>) => {
+    onChange(event);
+    changedDates(event);
+  };
+
   return (
     <Div light={light}>
       {times.map(({ time, light }, index) => {
-        const handleChanged = ({
-          target: { value },
-        }: ChangeEvent<HTMLInputElement>) => {
+        const handleChanged = (event: ChangeEvent<HTMLInputElement>) => {
+          onChange(event);
+          const {
+            target: { value },
+          } = event;
           const timesCopy = [...times];
           timesCopy[index] = {
             time,
@@ -147,17 +182,24 @@ const DailyQuantityRow = ({
           };
           setTimes(timesCopy);
         };
+        const name = time.toLowerCase() as keyof IDailyDosage;
         return (
           <Item key={time} light={light}>
-            <NumberInput onChange={handleChanged} />
+            <NumberInput
+              onChange={handleChanged}
+              name={name}
+              value={dosage[name]}
+            />
           </Item>
         );
       })}
       <ItemDate>
         <DateInput
           placeholder='Dates'
-          onChange={changedDates}
+          onChange={onChangeDates}
           onBlur={removedDate}
+          name='dates'
+          value={dosage.dates}
         />
       </ItemDate>
     </Div>

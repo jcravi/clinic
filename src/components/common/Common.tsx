@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { setCommonInput } from '../../actions';
+
+import { ICommon, StateInterface } from '../../interfaces';
 import { StyledLabel } from './CommonComponents';
 import { Label } from './Label';
 
 const Input = styled.input.attrs((_) => ({
   type: 'text',
 }))`
-  width: 50px;
+  width: 60px;
   border: none;
   border-bottom: 1px dotted grey;
   text-align: left;
@@ -44,42 +48,20 @@ const Top = styled.div`
   }
 `;
 
-type StateType = {
-  fileNo: string;
-  opdNo: string;
-  name: string;
-  ageSex: string;
-  Address: string;
-};
-
-const initState: StateType = {
-  fileNo: '',
-  opdNo: '',
-  name: '',
-  ageSex: '',
-  Address: '',
-};
-
-type CommonProps = {
-  clear: boolean;
-};
-
-export const Common = ({ clear }: CommonProps) => {
+const CommonComponent = ({
+  fileNo,
+  opdNo,
+  name,
+  ageSex,
+  address,
+  setCommon,
+}: ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps) => {
   const date = new Date().toLocaleDateString('en-IN');
-
-  const [state, setState] = useState(initState);
-
-  useEffect(() => {
-    if (clear) {
-      setState(initState);
-    }
-  }, [clear]);
 
   const onChange = ({
     target: { name, value },
   }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const newState = { ...state, [name]: value } as StateType;
-    setState(newState);
+    setCommon(name as keyof ICommon, value);
   };
 
   return (
@@ -88,43 +70,71 @@ export const Common = ({ clear }: CommonProps) => {
         <div>
           <label>
             File No:{' '}
-            <Input name='fileNo' value={state.fileNo} onChange={onChange} />
+            <Input
+              maxLength={7}
+              name='fileNo'
+              value={fileNo}
+              onChange={onChange}
+            />
           </label>
         </div>
         <div>
           <label>
             OPD No:{' '}
-            <Input name='opdNo' value={state.opdNo} onChange={onChange} />
+            <Input
+              maxLength={7}
+              name='opdNo'
+              value={opdNo}
+              onChange={onChange}
+            />
           </label>
         </div>
         <div>Date: {date}</div>
       </Top>
       <div style={{ display: 'flex', alignItems: 'flex-start' }}>
         <StyledLabel style={{ width: '100%' }}>
-          Name:&nbsp;
+          Name:{' '}
           <Input
             maxLength={65}
             autoComplete='off'
             style={{ width: '100%' }}
             name='name'
-            value={state.name}
+            value={name}
             onChange={onChange}
           />
         </StyledLabel>
         <StyledLabel>
-          Age/Sex:&nbsp;
+          Age/Sex:{' '}
           <Input
             maxLength={7}
             style={{ width: '70px' }}
             name='ageSex'
-            value={state.ageSex}
+            value={ageSex}
             onChange={onChange}
           />
         </StyledLabel>
       </div>
       <div>
-        <Label name='Address' value={state.Address} onChange={onChange} />
+        <Label
+          inputName='address'
+          name='Address'
+          value={address}
+          onChange={onChange}
+        />
       </div>
     </>
   );
 };
+
+const mapStateToProps = ({
+  common: { fileNo, opdNo, name, ageSex, address },
+}: StateInterface) => ({ fileNo, opdNo, name, ageSex, address });
+
+const mapDispatchToProps = {
+  setCommon: setCommonInput,
+};
+
+export const Common = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CommonComponent);

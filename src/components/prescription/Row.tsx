@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { IDailyDosage, IPrescription } from '../../interfaces';
 import { DailyQuantities } from './DailyQuantities';
 import { Input } from './Input';
 import { MedicineName } from './MedicineName';
@@ -7,15 +8,15 @@ import { MiddleColumn, NotesColumn, SerialColumn, TableRow } from './Table';
 
 const StyledRow = styled(TableRow)<{ light: boolean }>`
   & input::placeholder {
-    color: ${({ light }) => (light ? 'lightgray' : 'gray')};
+    color: ${({ light }) => (light ? 'lightgray' : 'darkgray')};
   }
 
-  border-top: 1px solid gray !important;
+  border-top: 1px solid darkgray !important;
   border-bottom: ${({ light }) => (light ? '1px dotted lightgray' : 'none')};
 
   & > div {
     padding: 0 0 0 0;
-    border-color: ${({ light }) => (light ? 'lightgray' : 'gray')};
+    border-color: ${({ light }) => (light ? 'lightgray' : 'darkgray')};
     border-style: ${({ light }) => (light ? 'dotted' : 'solid')};
     color: ${({ light }) => (light ? 'lightgray' : 'black')};
   }
@@ -28,7 +29,7 @@ const StyledRow = styled(TableRow)<{ light: boolean }>`
   @media print {
     display: ${({ light }) => (light ? 'none' : 'auto')};
     border: none !important;
-    border-top: 1px dotted gray !important;
+    border-top: 1px dotted darkgray !important;
     & input::placeholder {
       color: transparent;
     }
@@ -37,7 +38,8 @@ const StyledRow = styled(TableRow)<{ light: boolean }>`
 
 const Dosage = styled.div<{ light: boolean }>`
   color: ${({ light }) => (light ? 'lightgray' : 'black')};
-  border-top: 1px ${({ light }) => (light ? 'dotted lightgray' : 'solid gray')} !important;
+  border-top: 1px
+    ${({ light }) => (light ? 'dotted lightgray' : 'solid darkgray')} !important;
   @media print {
     border-top: none !important;
   }
@@ -53,7 +55,7 @@ const TextArea = styled.textarea<{ light: boolean }>`
   padding-top: 0px;
   padding-bottom: 0px;
   &::placeholder {
-    color: ${({ light }) => (light ? 'lightgray' : 'gray')};
+    color: ${({ light }) => (light ? 'lightgray' : 'darkgray')};
   }
   &::-webkit-resizer {
     display: none;
@@ -77,10 +79,32 @@ type RowProps = {
   index: number;
   entered: (e: React.ChangeEvent<HTMLInputElement>) => void;
   removed: (e: React.ChangeEvent<HTMLInputElement>) => void;
-};
+  onChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
+  onChangeMedicineName: (value: string) => void;
+  onDosageChange: (index: number, name: string, value: string) => void;
+  dosages: Array<IDailyDosage>;
+  addDosage: () => void;
+  removeDosage: () => void;
+} & IPrescription;
 
-export const Row = ({ size, index, entered, removed }: RowProps) => {
-  const light = index === size;
+export const Row = ({
+  size,
+  index,
+  entered,
+  removed,
+  medicineName,
+  quantity,
+  notes,
+  onChange,
+  onChangeMedicineName,
+  onDosageChange,
+  dosages,
+  addDosage,
+  removeDosage,
+}: RowProps) => {
+  const light = index === size - 1;
 
   const onTextAreaInput = ({
     currentTarget,
@@ -91,24 +115,46 @@ export const Row = ({ size, index, entered, removed }: RowProps) => {
 
   return (
     <StyledRow light={light}>
-      <SerialColumn>{index}</SerialColumn>
+      <SerialColumn>{index + 1}</SerialColumn>
       <MiddleColumn>
         <NameSection light={light}>
-          <MedicineName entered={entered} removed={removed} />
+          <MedicineName
+            entered={entered}
+            removed={removed}
+            value={medicineName}
+            onChange={onChangeMedicineName}
+          />
           <div style={{ width: '101px' }}>
             <Input
               style={{ width: '100px' }}
               type='text'
               placeholder='Quantity'
+              name='quantity'
+              value={quantity}
+              onChange={onChange}
             />
           </div>
         </NameSection>
         <Dosage light={light}>
-          <DailyQuantities rowIndex={index} light={light} />
+          <DailyQuantities
+            rowIndex={index}
+            light={light}
+            dosages={dosages}
+            addDosage={addDosage}
+            removeDosage={removeDosage}
+            onDosageChange={onDosageChange}
+          />
         </Dosage>
       </MiddleColumn>
       <NotesColumn>
-        <TextArea light={light} placeholder='Notes' onInput={onTextAreaInput} />
+        <TextArea
+          light={light}
+          placeholder='Notes'
+          onInput={onTextAreaInput}
+          name='notes'
+          value={notes}
+          onChange={onChange}
+        />
       </NotesColumn>
     </StyledRow>
   );

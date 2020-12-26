@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { search, SearchResult } from '../../js/search';
+import { search, SearchResult } from '../../utils/search';
 import { Input } from './Input';
 
 const AutoCompleteContainer = styled.div`
@@ -46,13 +46,18 @@ const AutoCompleteItem = styled.div<{ highlighted: boolean; hover: boolean }>`
 type Props = {
   entered: (e: React.ChangeEvent<HTMLInputElement>) => void;
   removed: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value: string;
+  onChange: (value: string) => void;
 };
 
-export const MedicineName = ({ entered, removed }: Props) => {
-  const [name, setName] = useState('');
+export const MedicineName = ({ entered, removed, value, onChange }: Props) => {
   const [choices, setChoices] = useState<Array<SearchResult>>([]);
   const [selected, setSelected] = useState<number>(-1);
   const [hover, setHover] = useState(true);
+
+  const setName = (value: string) => {
+    onChange(value);
+  };
 
   const reset = () => {
     setChoices([]);
@@ -76,8 +81,8 @@ export const MedicineName = ({ entered, removed }: Props) => {
         reset();
       }
     } else if (/[a-z0-9]/i.test(key) || key === 'Backspace') {
-      if (name.length > 0) {
-        const names = search(name).slice(0, 10);
+      if (value.length > 0) {
+        const names = search(value).slice(0, 10);
         setChoices(names);
       } else {
         reset();
@@ -114,7 +119,7 @@ export const MedicineName = ({ entered, removed }: Props) => {
         }}
         onBlur={onBlur}
         onKeyUp={onKeyUp}
-        value={name}
+        value={value}
       />
       {choices.length !== 0 && (
         <AutoCompleteItems>

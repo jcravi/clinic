@@ -1,5 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { ChartType, StateInterface } from '../../interfaces';
 
 import {
   X_AXIS,
@@ -12,7 +14,8 @@ import {
   calcX,
   calcY,
   DEFAULT,
-} from '../../js/chart-utils';
+  toPointsLine,
+} from '../../utils/chart-utils';
 
 const Legend = styled.g`
   font-size: 10px;
@@ -79,24 +82,12 @@ const subSubAxisStyle = {
   stroke: 'lightgrey',
 };
 
-type GraphType = {
-  points: {
-    [key: string]: number;
-  };
-  pointLine: string;
-};
-
-type SideType = {
-  air: GraphType;
-  bone: GraphType;
-};
-
-type ChartType = {
-  right: SideType;
-  left: SideType;
-};
-
-export const Chart = ({ right, left }: ChartType) => {
+const ChartComponent = ({
+  rightAir,
+  rightBone,
+  leftAir,
+  leftBone,
+}: ChartType) => {
   return (
     <svg
       version='1.2'
@@ -105,7 +96,6 @@ export const Chart = ({ right, left }: ChartType) => {
         height: `${height}`,
         width: `${width}`,
       }}
-      transform='translate(20,0)'
     >
       <Legend transform='translate(50,5)'>
         <text x='0' y='10'>
@@ -258,21 +248,21 @@ export const Chart = ({ right, left }: ChartType) => {
         </text>
       </AxisTitle>
       <RightAir>
-        <polyline points={right.air.pointLine} />
+        <polyline points={toPointsLine(rightAir)} />
         {X_AXIS.map((x, index) => {
           const cx = calcX(index);
-          const cy = calcY(right.air.points[x]);
-          return right.air.points[x] === DEFAULT ? null : (
+          const cy = calcY(rightAir[x]);
+          return rightAir[x] === DEFAULT ? null : (
             <circle key={x} cx={cx} cy={cy} r='3' />
           );
         })}
       </RightAir>
       <RightBone>
-        <polyline points={right.bone.pointLine} />
+        <polyline points={toPointsLine(rightBone)} />
         {X_AXIS.map((x, index) => {
           const cx = calcX(index);
-          const cy = calcY(right.bone.points[x]);
-          return right.bone.points[x] === DEFAULT ? null : (
+          const cy = calcY(rightBone[x]);
+          return rightBone[x] === DEFAULT ? null : (
             <circle key={x} cx={cx} cy={cy} r='3' />
           );
         })}
@@ -280,27 +270,38 @@ export const Chart = ({ right, left }: ChartType) => {
       <LeftAir>
         {X_AXIS.map((x, index) => {
           const cx = calcX(index);
-          const cy = calcY(left.air.points[x]) + 4.5;
-          return left.air.points[x] === DEFAULT ? null : (
+          const cy = calcY(leftAir[x]) + 4.5;
+          return leftAir[x] === DEFAULT ? null : (
             <text key={x} x={cx} y={cy} textAnchor='middle'>
               x
             </text>
           );
         })}
-        <polyline fill='none' points={left.air.pointLine} />
+        <polyline fill='none' points={toPointsLine(leftAir)} />
       </LeftAir>
       <LeftBone>
         {X_AXIS.map((x, index) => {
           const cx = calcX(index);
-          const cy = calcY(left.bone.points[x]) + 4.5;
-          return left.bone.points[x] === DEFAULT ? null : (
+          const cy = calcY(leftBone[x]) + 4.5;
+          return leftBone[x] === DEFAULT ? null : (
             <text key={x} x={cx} y={cy} textAnchor='middle'>
               x
             </text>
           );
         })}
-        <polyline fill='none' points={left.bone.pointLine} />
+        <polyline fill='none' points={toPointsLine(leftBone)} />
       </LeftBone>
     </svg>
   );
 };
+
+const mapStateToProps = ({
+  chart: { rightAir, rightBone, leftAir, leftBone },
+}: StateInterface) => ({
+  rightAir,
+  rightBone,
+  leftAir,
+  leftBone,
+});
+
+export const Chart = connect(mapStateToProps)(ChartComponent);

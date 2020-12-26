@@ -1,5 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
+
+import { StateInterface } from '../../interfaces';
 
 const Container = styled.div<{ printLetterHead: boolean }>`
   margin-left: 30px;
@@ -36,26 +39,28 @@ const Address = styled.div`
   border-bottom: 2px solid black;
 `;
 
-export const LetterHead = ({
-  printLetterHead,
-}: {
-  printLetterHead: boolean;
-}) => {
+const LetterHeadComponent = ({
+  name,
+  degrees,
+  reg,
+  days,
+  times1,
+  times2,
+  print,
+}: ReturnType<typeof mapStateToProps>) => {
   return (
-    <Container printLetterHead={printLetterHead}>
-      <Title>JK Holistic Ear nose Throat &amp; Head-Neck Clinic</Title>
+    <Container printLetterHead={print}>
+      <Title>JK Holistic Ear Nose Throat &amp; Head-Neck Clinic</Title>
       <Content>
         <div>
-          <div style={{ fontSize: '20px', fontWeight: 'bold' }}>
-            Dr. Janardhan N. C.
-          </div>
-          <div>MBBS, MS(ENT), DORL, PGDHHCM</div>
-          <div>Reg. No: 45341</div>
+          <div style={{ fontSize: '20px', fontWeight: 'bold' }}>{name}</div>
+          <div>{degrees}</div>
+          <div>Reg. No: {reg}</div>
         </div>
         <div style={{ textAlign: 'right' }}>
-          <div>Mon/Wed/Thur/Sat</div>
-          <div>10 am to 1 pm</div>
-          <div>5 pm to 8 pm</div>
+          <div>{days}</div>
+          <div>{times1}</div>
+          <div>{times2}</div>
         </div>
       </Content>
       <Address>
@@ -65,3 +70,17 @@ export const LetterHead = ({
     </Container>
   );
 };
+
+const mapStateToProps = ({
+  letterHead: { name, degrees, reg, days, times1, times2, print },
+}: StateInterface) => ({
+  name,
+  degrees,
+  reg,
+  days,
+  times1,
+  times2,
+  print,
+});
+
+export const LetterHead = connect(mapStateToProps)(LetterHeadComponent);

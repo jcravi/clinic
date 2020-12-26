@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
+
+import { StateInterface } from '../../interfaces';
+import { printLetterHead, startedPrint } from './../../actions/index';
 
 const ButtonPlacement = styled.div`
   position: fixed;
@@ -37,34 +41,44 @@ const StyledButton = styled.button`
   }
 `;
 
-export const PrintButton = ({
-  setPrintLetterHead,
-  setPrint,
-}: {
-  setPrintLetterHead: React.Dispatch<React.SetStateAction<boolean>>;
-  setPrint: React.Dispatch<React.SetStateAction<boolean>>;
-}) => {
-  const print = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    printLetterHead: boolean
-  ): void => {
-    setPrintLetterHead(printLetterHead);
-    event.preventDefault();
-    setPrint(true);
-  };
+const PrintButtonComponent = ({
+  printLetterHead,
+  startedPrint,
+  print,
+}: ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps) => {
+  useEffect(() => {
+    if (print) {
+      startedPrint();
+      window.print();
+    }
+  }, [print, startedPrint]);
 
   return (
     <ButtonPlacement>
       <div>
-        <StyledButton onClick={(e) => print(e, true)}>
+        <StyledButton onClick={() => printLetterHead(true)}>
           &#128438; LetterHead
         </StyledButton>
       </div>
       <div>
-        <StyledButton onClick={(e) => print(e, false)}>
+        <StyledButton onClick={(e) => printLetterHead(false)}>
           &#128438; Print
         </StyledButton>
       </div>
     </ButtonPlacement>
   );
 };
+
+const mapStateToProps = ({ print }: StateInterface) => ({
+  print,
+});
+
+const mapDispatchToProps = {
+  printLetterHead,
+  startedPrint,
+};
+
+export const PrintButton = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PrintButtonComponent);

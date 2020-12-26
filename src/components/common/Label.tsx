@@ -3,13 +3,14 @@ import { StyledLabel, TextArea } from './CommonComponents';
 
 type LabelProps = {
   name: string;
+  inputName?: string;
   value?: string;
   onChange?: (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
 };
 
-export const Label = ({ name, value, onChange }: LabelProps) => {
+export const Label = ({ inputName, name, value, onChange }: LabelProps) => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
   const onTextAreaInput = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -31,7 +32,7 @@ export const Label = ({ name, value, onChange }: LabelProps) => {
         {name}:&nbsp;
         <TextArea
           ref={textAreaRef}
-          name={name}
+          name={inputName || name}
           onChange={onTextAreaInput}
           value={value}
         />
