@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/clinic/static/css/main.c50f5d58.chunk.css",
-    "main.js": "/clinic/static/js/main.2a03c668.chunk.js",
-    "main.js.map": "/clinic/static/js/main.2a03c668.chunk.js.map",
+    "main.js": "/clinic/static/js/main.1cce343a.chunk.js",
+    "main.js.map": "/clinic/static/js/main.1cce343a.chunk.js.map",
     "runtime-main.js": "/clinic/static/js/runtime-main.cc94648b.js",
     "runtime-main.js.map": "/clinic/static/js/runtime-main.cc94648b.js.map",
     "static/js/2.a328482b.chunk.js": "/clinic/static/js/2.a328482b.chunk.js",
     "static/js/2.a328482b.chunk.js.map": "/clinic/static/js/2.a328482b.chunk.js.map",
     "index.html": "/clinic/index.html",
-    "precache-manifest.0b7d72d76b5d474920cefb5fb8f3e45d.js": "/clinic/precache-manifest.0b7d72d76b5d474920cefb5fb8f3e45d.js",
+    "precache-manifest.2e73d28757ea7e9af8c5894719f76b87.js": "/clinic/precache-manifest.2e73d28757ea7e9af8c5894719f76b87.js",
     "service-worker.js": "/clinic/service-worker.js",
     "static/css/main.c50f5d58.chunk.css.map": "/clinic/static/css/main.c50f5d58.chunk.css.map",
     "static/js/2.a328482b.chunk.js.LICENSE.txt": "/clinic/static/js/2.a328482b.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.cc94648b.js",
     "static/js/2.a328482b.chunk.js",
     "static/css/main.c50f5d58.chunk.css",
-    "static/js/main.2a03c668.chunk.js"
+    "static/js/main.1cce343a.chunk.js"
   ]
 }
