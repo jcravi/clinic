@@ -11,18 +11,12 @@ type LabelProps = {
 };
 
 export const Label = ({ inputName, name, value, onChange }: LabelProps) => {
-  const textAreaRef = useRef<HTMLTextAreaElement>(null);
-
-  const onTextAreaInput = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    onChange && onChange(event);
-    const { currentTarget } = event;
-    currentTarget.style.height = '27px';
-    currentTarget.style.height = `${currentTarget.scrollHeight}px`;
-  };
+  const ref = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
-    if (value === '' && textAreaRef.current) {
-      textAreaRef.current.style.height = '27px';
+    if (ref.current) {
+      ref.current.style.height = '27px';
+      ref.current.style.height = `${ref.current.scrollHeight}px`;
     }
   }, [value]);
 
@@ -31,9 +25,9 @@ export const Label = ({ inputName, name, value, onChange }: LabelProps) => {
       <StyledLabel>
         {name}:&nbsp;
         <TextArea
-          ref={textAreaRef}
+          ref={ref}
           name={inputName || name}
-          onChange={onTextAreaInput}
+          onChange={onChange}
           value={value}
         />
       </StyledLabel>
