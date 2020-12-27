@@ -1,11 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { setCommonInput } from '../../actions';
+import { connect } from 'react-redux';
 
-import { ICommon, StateInterface } from '../../interfaces';
 import { StyledLabel } from './CommonComponents';
 import { Label } from './Label';
+
+import { setCommonInput } from '../../actions/common';
+import { ICommonInputs, StateInterface } from '../../interfaces';
 
 const Input = styled.input.attrs((_) => ({
   type: 'text',
@@ -61,7 +62,7 @@ const CommonComponent = ({
   const onChange = ({
     target: { name, value },
   }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setCommon(name as keyof ICommon, value);
+    setCommon(name as keyof ICommonInputs, value);
   };
 
   return (

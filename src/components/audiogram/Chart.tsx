@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { ChartType, StateInterface } from '../../interfaces';
 
+import { ChartType, StateInterface } from '../../interfaces';
 import {
   X_AXIS,
   Y_AXIS,

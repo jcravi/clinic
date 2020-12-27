@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { ISheetInputs, StateInterface } from '../../interfaces';
 import { Label } from '../common/Label';
 import { Prescription } from './Prescription';
-import { setSheetInput } from '../../actions/index';
+import { setSheetInput } from '../../actions/sheets';
 
 const SheetComponent = ({
   diagnosis,

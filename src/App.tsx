@@ -10,7 +10,7 @@ import { Audiogram } from './components/audiogram/Audiogram';
 import { Common } from './components/common/Common';
 
 import { StateInterface } from './interfaces';
-import { clear } from './actions/index';
+import { clear } from './actions/clear';
 
 const OverallDiv = styled.div<{ printLetterHead: boolean }>`
   padding-top: 10px;

@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from 'react';
 import styled from 'styled-components';
-import { IDailyDosage } from '../../interfaces';
+import { IDailyDosageInputs } from '../../interfaces';
 
 const Div = styled.div<{ light: boolean }>`
   display: flex;
@@ -79,7 +79,7 @@ const ItemDate = styled.div`
 type DailyQuantitiesProps = {
   rowIndex: number;
   light: boolean;
-  dosages: Array<IDailyDosage>;
+  dosages: Array<IDailyDosageInputs>;
   onDosageChange: (index: number, name: string, value: string) => void;
   addDosage: () => void;
   removeDosage: () => void;
@@ -122,7 +122,7 @@ export const DailyQuantities = ({
         const onChange = ({
           target: { name, value },
         }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-          onDosageChange(i, name as keyof IDailyDosage, value);
+          onDosageChange(i, name as keyof IDailyDosageInputs, value);
         };
         return (
           <DailyQuantityRow
@@ -141,7 +141,7 @@ export const DailyQuantities = ({
 
 type DailyQuantityRowProps = {
   light: boolean;
-  dosage: IDailyDosage;
+  dosage: IDailyDosageInputs;
   changedDates: (event: React.ChangeEvent<HTMLInputElement>) => void;
   removedDate: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onChange: (
@@ -182,7 +182,7 @@ const DailyQuantityRow = ({
           };
           setTimes(timesCopy);
         };
-        const name = time.toLowerCase() as keyof IDailyDosage;
+        const name = time.toLowerCase() as keyof IDailyDosageInputs;
         return (
           <Item key={time} light={light}>
             <NumberInput

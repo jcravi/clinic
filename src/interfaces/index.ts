@@ -1,6 +1,6 @@
 import { X_AXIS } from '../utils/chart-utils';
 
-export interface ILetterHead {
+export interface ILetterHeadInputs {
   name: string;
   degrees: string;
   reg: string;
@@ -10,7 +10,7 @@ export interface ILetterHead {
   print: boolean;
 }
 
-export interface ICommon {
+export interface ICommonInputs {
   fileNo: string;
   opdNo: string;
   name: string;
@@ -18,14 +18,14 @@ export interface ICommon {
   address: string;
 }
 
-export interface IDailyDosage {
+export interface IDailyDosageInputs {
   morning: string;
   afternoon: string;
   night: string;
   dates: string;
 }
 
-export interface IPrescription {
+export interface IPrescriptionInputs {
   medicineName: string;
   quantity: string;
   notes: string;
@@ -48,18 +48,20 @@ export interface ChartType {
   leftBone: PointsType;
 }
 
-export interface AudiogramTextType {
+export interface IAudiogramInputs {
   remarks: string;
   hearingAidTrial: string;
 }
 
 export interface StateInterface {
-  letterHead: ILetterHead;
-  common: ICommon;
+  letterHead: ILetterHeadInputs;
+  common: ICommonInputs;
   sheet: ISheetInputs & {
-    prescriptions: Array<IPrescription & { dosages: Array<IDailyDosage> }>;
+    prescriptions: Array<
+      IPrescriptionInputs & { dosages: Array<IDailyDosageInputs> }
+    >;
   };
   chart: ChartType;
-  audiogram: AudiogramTextType;
+  audiogram: IAudiogramInputs;
   print: boolean;
 }

@@ -11,8 +11,8 @@ import {
 } from './Table';
 
 import {
-  IPrescription,
-  IDailyDosage,
+  IPrescriptionInputs,
+  IDailyDosageInputs,
   StateInterface,
 } from '../../interfaces/index';
 
@@ -23,7 +23,7 @@ import {
   removePrescription,
   addDosage,
   removeDosage,
-} from '../../actions/index';
+} from '../../actions/sheets';
 
 const PrescriptionComponent = ({
   prescriptions,
@@ -45,7 +45,7 @@ const PrescriptionComponent = ({
         const onChange = ({
           target: { name, value },
         }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-          setPrescription(index, name as keyof IPrescription, value);
+          setPrescription(index, name as keyof IPrescriptionInputs, value);
         };
         const onChangeMedicineName = (value: string) => {
           setPrescription(index, 'medicineName', value);
@@ -76,7 +76,12 @@ const PrescriptionComponent = ({
           name: string,
           value: string
         ) => {
-          setDosage(index, dosageIndex, name as keyof IDailyDosage, value);
+          setDosage(
+            index,
+            dosageIndex,
+            name as keyof IDailyDosageInputs,
+            value
+          );
         };
 
         const RowProps = {

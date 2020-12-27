@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import { StateInterface } from '../../interfaces';
-import { printLetterHead, startedPrint } from './../../actions/index';
+import { startedPrint } from './../../actions/print';
+import { printLetterHead } from './../../actions/letterHead';
 
 const ButtonPlacement = styled.div`
   position: fixed;

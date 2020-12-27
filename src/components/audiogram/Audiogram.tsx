@@ -3,16 +3,17 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 
 import { Chart } from './Chart';
-import { X_AXIS } from '../../utils/chart-utils';
 import { Label } from '../common/Label';
 
-import { setPoint, setAudiogramInput } from '../../actions/index';
+import { X_AXIS } from '../../utils/chart-utils';
+import { setPoint } from '../../actions/chart';
+import { setAudiogramInput } from '../../actions/audiogram';
 import {
-  AudiogramTextType,
+  IAudiogramInputs,
   ChartType,
   PointsType,
   StateInterface,
-} from '../../interfaces/index';
+} from '../../interfaces';
 
 const Container = styled.div`
   display: flex;
@@ -95,7 +96,7 @@ const AudiogramComponent = ({
   const onChange = ({
     target: { name, value },
   }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setAudiogramInput(name as keyof AudiogramTextType, value);
+    setAudiogramInput(name as keyof IAudiogramInputs, value);
   };
 
   const arr: Array<NumbersType> = [

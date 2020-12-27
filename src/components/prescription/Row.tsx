@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { IDailyDosage, IPrescription } from '../../interfaces';
+import { IDailyDosageInputs, IPrescriptionInputs } from '../../interfaces';
 import { DailyQuantities } from './DailyQuantities';
 import { Input } from './Input';
 import { MedicineName } from './MedicineName';
@@ -84,10 +84,10 @@ type RowProps = {
   ) => void;
   onChangeMedicineName: (value: string) => void;
   onDosageChange: (index: number, name: string, value: string) => void;
-  dosages: Array<IDailyDosage>;
+  dosages: Array<IDailyDosageInputs>;
   addDosage: () => void;
   removeDosage: () => void;
-} & IPrescription;
+} & IPrescriptionInputs;
 
 export const Row = ({
   size,
