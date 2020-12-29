@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
-import { StateInterface } from '../../interfaces';
-import { startedPrint } from './../../actions/print';
-import { printLetterHead } from './../../actions/letterHead';
+import { RootStateType } from '../../slices';
+import { startedPrint } from '../../slices/print';
+import { printLetterHead } from '../../slices/letterHead';
 
 const ButtonPlacement = styled.div`
   position: fixed;
@@ -46,7 +46,7 @@ const PrintButtonComponent = ({
   printLetterHead,
   startedPrint,
   print,
-}: ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps) => {
+}: ReturnType<typeof mapState> & typeof mapDispatch) => {
   useEffect(() => {
     if (print) {
       startedPrint();
@@ -70,16 +70,13 @@ const PrintButtonComponent = ({
   );
 };
 
-const mapStateToProps = ({ print }: StateInterface) => ({
+const mapState = ({ print }: RootStateType) => ({
   print,
 });
 
-const mapDispatchToProps = {
+const mapDispatch = {
   printLetterHead,
   startedPrint,
 };
 
-export const PrintButton = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PrintButtonComponent);
+export const PrintButton = connect(mapState, mapDispatch)(PrintButtonComponent);

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { IDailyDosageInputs, IPrescriptionInputs } from '../../interfaces';
+
+import { DosageStateType, PrescriptionTextType } from '../../slices/sheet';
 import { DailyQuantities } from './DailyQuantities';
 import { Input } from './Input';
 import { MedicineName } from './MedicineName';
@@ -48,7 +49,7 @@ const Dosage = styled.div<{ light: boolean }>`
 const TextArea = styled.textarea<{ light: boolean }>`
   vertical-align: top;
   width: 99px;
-  height: 75px;
+  height: 78px;
   border: none;
   overflow: hidden;
   resize: vertical;
@@ -84,10 +85,10 @@ type RowProps = {
   ) => void;
   onChangeMedicineName: (value: string) => void;
   onDosageChange: (index: number, name: string, value: string) => void;
-  dosages: Array<IDailyDosageInputs>;
+  dosages: Array<DosageStateType>;
   addDosage: () => void;
   removeDosage: () => void;
-} & IPrescriptionInputs;
+} & PrescriptionTextType;
 
 export const Row = ({
   size,
@@ -106,12 +107,14 @@ export const Row = ({
 }: RowProps) => {
   const light = index === size - 1;
 
-  const onTextAreaInput = ({
-    currentTarget,
-  }: React.FormEvent<HTMLTextAreaElement>) => {
-    currentTarget.style.height = '75px';
-    currentTarget.style.height = `${currentTarget.scrollHeight}px`;
-  };
+  const ref = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.style.height = '78px';
+      ref.current.style.height = `${ref.current.scrollHeight}px`;
+    }
+  }, [notes]);
 
   return (
     <StyledRow light={light}>
@@ -148,9 +151,9 @@ export const Row = ({
       </MiddleColumn>
       <NotesColumn>
         <TextArea
+          ref={ref}
           light={light}
           placeholder='Notes'
-          onInput={onTextAreaInput}
           name='notes'
           value={notes}
           onChange={onChange}

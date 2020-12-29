@@ -2,20 +2,19 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
-import { ChartType, StateInterface } from '../../interfaces';
 import {
+  HEIGHT,
+  WIDTH,
   X_AXIS,
   Y_AXIS,
-  width,
-  height,
-  offset,
-  xInc,
-  yInc,
-  calcX,
-  calcY,
   DEFAULT,
-  toPointsLine,
-} from '../../utils/chart-utils';
+  OFFSET,
+  X_INCREMENT,
+  Y_INCREMENT,
+} from '../../contants/chart';
+import { RootStateType } from '../../slices';
+import { ChartStateType } from '../../slices/chart';
+import { calcX, calcY, toPointsLine } from '../../utils/chart-utils';
 
 const Legend = styled.g`
   font-size: 10px;
@@ -87,14 +86,14 @@ const ChartComponent = ({
   rightBone,
   leftAir,
   leftBone,
-}: ChartType) => {
+}: ChartStateType) => {
   return (
     <svg
       version='1.2'
       role='img'
       style={{
-        height: `${height}`,
-        width: `${width}`,
+        height: `${HEIGHT}`,
+        width: `${WIDTH}`,
       }}
     >
       <Legend transform='translate(50,5)'>
@@ -154,81 +153,82 @@ const ChartComponent = ({
       <Axis>
         {/* Y Axis Helpers */}
         {X_AXIS.map((key, index) => {
-          const x = offset + (index + 1) * xInc;
+          const x = OFFSET + (index + 1) * X_INCREMENT;
           return (
             <line
               key={key}
               style={subAxisStyle}
               x1={x}
-              y1={offset}
+              y1={OFFSET}
               x2={x}
-              y2={height - offset}
+              y2={HEIGHT - OFFSET}
             />
           );
         })}
         {X_AXIS.map((key, index) => {
-          const x = offset + (index + 1) * xInc - xInc / 2;
+          const x = OFFSET + (index + 1) * X_INCREMENT - X_INCREMENT / 2;
           return (
             <line
               key={key}
               style={subSubAxisStyle}
               x1={x}
-              y1={offset}
+              y1={OFFSET}
               x2={x}
-              y2={height - offset}
+              y2={HEIGHT - OFFSET}
             />
           );
         })}
         {/* X Axis Helpers */}
         {Y_AXIS.map((key, index) => {
-          const y = height - offset - (index + 1) * yInc;
+          const y = HEIGHT - OFFSET - (index + 1) * Y_INCREMENT;
           return index !== Y_AXIS.length - 1 ? (
             <line
               key={key}
               style={subAxisStyle}
-              x1={offset}
+              x1={OFFSET}
               y1={y}
-              x2={width - offset}
+              x2={WIDTH - OFFSET}
               y2={y}
             />
           ) : null;
         })}
         {Y_AXIS.map((key, index) => {
-          const y = height - offset - (index + 1) * yInc + yInc / 2;
+          const y =
+            HEIGHT - OFFSET - (index + 1) * Y_INCREMENT + Y_INCREMENT / 2;
           return index !== Y_AXIS.length - 1 ? (
             <line
               key={key}
               style={subSubAxisStyle}
-              x1={offset}
+              x1={OFFSET}
               y1={y}
-              x2={width - offset}
+              x2={WIDTH - OFFSET}
               y2={y}
             />
           ) : null;
         })}
         {/* X Axis */}
         <line
-          x1={offset}
-          y1={height - offset}
-          x2={width - offset}
-          y2={height - offset}
+          x1={OFFSET}
+          y1={HEIGHT - OFFSET}
+          x2={WIDTH - OFFSET}
+          y2={HEIGHT - OFFSET}
         />
         {/* Y Axis */}
-        <line x1={offset} y1={offset} x2={offset} y2={height - offset} />
+        <line x1={OFFSET} y1={OFFSET} x2={OFFSET} y2={HEIGHT - OFFSET} />
       </Axis>
       <AxisLabel>
         {X_AXIS.map((key, index) => {
-          const x = offset + (index + 1) * xInc;
+          const x = OFFSET + (index + 1) * X_INCREMENT;
           return (
-            <text key={key} x={x} y={height - offset + 13} textAnchor='middle'>
+            <text key={key} x={x} y={HEIGHT - OFFSET + 13} textAnchor='middle'>
               {key}
             </text>
           );
         })}
         {Y_AXIS.map((key, index) => {
-          const y = height - offset - index * yInc + 4;
+          const y = HEIGHT - OFFSET - index * Y_INCREMENT + 4;
           return (
-            <text key={key} x={offset - 4} y={y} textAnchor='end'>
+            <text key={key} x={OFFSET - 4} y={y} textAnchor='end'>
               {key}
             </text>
           );
@@ -236,14 +236,14 @@ const ChartComponent = ({
       </AxisLabel>
       <AxisTitle>
         <text
-          x={offset - 25}
-          y={height / 2}
+          x={OFFSET - 25}
+          y={HEIGHT / 2}
           textAnchor='middle'
-          transform={`rotate(-90, ${offset - 25}, ${height / 2})`}
+          transform={`rotate(-90, ${OFFSET - 25}, ${HEIGHT / 2})`}
         >
           Intensity (db)
         </text>
-        <text x={width / 2} y={height - offset + 30} textAnchor='middle'>
+        <text x={WIDTH / 2} y={HEIGHT - OFFSET + 30} textAnchor='middle'>
           Frequency (Hz)
         </text>
       </AxisTitle>
@@ -295,13 +295,13 @@ const ChartComponent = ({
   );
 };
 
-const mapStateToProps = ({
+const mapState = ({
   chart: { rightAir, rightBone, leftAir, leftBone },
-}: StateInterface) => ({
+}: RootStateType) => ({
   rightAir,
   rightBone,
   leftAir,
   leftBone,
 });
 
-export const Chart = connect(mapStateToProps)(ChartComponent);
+export const Chart = connect(mapState)(ChartComponent);

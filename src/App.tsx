@@ -9,8 +9,8 @@ import { Sheet } from './components/prescription/Sheet';
 import { Audiogram } from './components/audiogram/Audiogram';
 import { Common } from './components/common/Common';
 
-import { StateInterface } from './interfaces';
-import { clear } from './actions/clear';
+import { RootStateType } from './slices';
+import { clear } from './slices/clear';
 
 const OverallDiv = styled.div<{ printLetterHead: boolean }>`
   padding-top: 10px;
@@ -54,7 +54,7 @@ const Navigator = styled.div`
 const AppComponent = ({
   printLetterHead,
   clear,
-}: ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps) => {
+}: ReturnType<typeof mapState> & typeof mapDispatch) => {
   return (
     <>
       <LetterHead />
@@ -94,12 +94,12 @@ const AppComponent = ({
   );
 };
 
-const mapStateToProps = ({ letterHead: { print } }: StateInterface) => ({
+const mapState = ({ letterHead: { print } }: RootStateType) => ({
   printLetterHead: print,
 });
 
-const mapDispatchToProps = {
+const mapDispatch = {
   clear,
 };
 
-export const App = connect(mapStateToProps, mapDispatchToProps)(AppComponent);
+export const App = connect(mapState, mapDispatch)(AppComponent);

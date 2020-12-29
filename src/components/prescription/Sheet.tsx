@@ -1,21 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { ISheetInputs, StateInterface } from '../../interfaces';
+import { RootStateType } from '../../slices';
 import { Label } from '../common/Label';
 import { Prescription } from './Prescription';
-import { setSheetInput } from '../../actions/sheets';
+import { setSheetInput, SheetTextType } from '../../slices/sheet';
 
 const SheetComponent = ({
   diagnosis,
   procedureDone,
   instructions,
   setSheetInput,
-}: ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps) => {
+}: ReturnType<typeof mapState> & typeof mapDispatch) => {
   const onChange = ({
     target: { name, value },
   }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setSheetInput(name as keyof ISheetInputs, value);
+    setSheetInput({ name: name as keyof SheetTextType, value });
   };
 
   return (
@@ -50,15 +50,12 @@ const SheetComponent = ({
   );
 };
 
-const mapStateToProps = ({
+const mapState = ({
   sheet: { diagnosis, procedureDone, instructions },
-}: StateInterface) => ({ diagnosis, procedureDone, instructions });
+}: RootStateType) => ({ diagnosis, procedureDone, instructions });
 
-const mapDispatchToProps = {
+const mapDispatch = {
   setSheetInput,
 };
 
-export const Sheet = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SheetComponent);
+export const Sheet = connect(mapState, mapDispatch)(SheetComponent);

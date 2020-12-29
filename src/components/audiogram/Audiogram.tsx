@@ -5,15 +5,10 @@ import { connect } from 'react-redux';
 import { Chart } from './Chart';
 import { Label } from '../common/Label';
 
-import { X_AXIS } from '../../utils/chart-utils';
-import { setPoint } from '../../actions/chart';
-import { setAudiogramInput } from '../../actions/audiogram';
-import {
-  IAudiogramInputs,
-  ChartType,
-  PointsType,
-  StateInterface,
-} from '../../interfaces';
+import { AudiogramStateType, setAudiogramInput } from '../../slices/audiogram';
+import { ChartStateType, PointsType, setPoint } from '../../slices/chart';
+import { RootStateType } from '../../slices';
+import { X_AXIS } from '../../contants/chart';
 
 const Container = styled.div`
   display: flex;
@@ -80,7 +75,7 @@ const NumberInput = styled.input.attrs((_) => ({
 
 interface NumbersType {
   points: PointsType;
-  sideType: keyof ChartType;
+  sideKey: keyof ChartStateType;
 }
 
 const AudiogramComponent = ({
@@ -92,18 +87,18 @@ const AudiogramComponent = ({
   hearingAidTrial,
   setPoint,
   setAudiogramInput,
-}: ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps) => {
+}: ReturnType<typeof mapState> & typeof mapDispatch) => {
   const onChange = ({
     target: { name, value },
   }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setAudiogramInput(name as keyof IAudiogramInputs, value);
+    setAudiogramInput({ name: name as keyof AudiogramStateType, value });
   };
 
   const arr: Array<NumbersType> = [
-    { points: rightAir, sideType: 'rightAir' },
-    { points: rightBone, sideType: 'rightBone' },
-    { points: leftAir, sideType: 'leftAir' },
-    { points: leftBone, sideType: 'leftBone' },
+    { points: rightAir, sideKey: 'rightAir' },
+    { points: rightBone, sideKey: 'rightBone' },
+    { points: leftAir, sideKey: 'leftAir' },
+    { points: leftBone, sideKey: 'leftBone' },
   ];
   return (
     <>
@@ -150,20 +145,24 @@ const AudiogramComponent = ({
                 </div>
               ))}
             </Cell>
-            {arr.map((o, i) => {
+            {arr.map(({ sideKey, points }, i) => {
               const onChange = ({
                 target: { name, value },
               }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-                setPoint(o.sideType, name as keyof PointsType, value);
+                setPoint({
+                  sideKey: sideKey as keyof ChartStateType,
+                  name: name as keyof PointsType,
+                  value,
+                });
               };
               return (
-                <div key={`div-${o}-${i}`}>
+                <div key={`div-${sideKey}-${i}`}>
                   {X_AXIS.map((x) => (
-                    <Cell key={`cell-${o}-${i}-${x}`}>
+                    <Cell key={`cell-${sideKey}-${i}-${x}`}>
                       <NumberInput
                         onChange={onChange}
                         name={x}
-                        value={o.points[x]}
+                        value={points[x]}
                       />
                     </Cell>
                   ))}
@@ -194,10 +193,10 @@ const AudiogramComponent = ({
   );
 };
 
-const mapStateToProps = ({
+const mapState = ({
   chart: { rightAir, rightBone, leftAir, leftBone },
   audiogram: { remarks, hearingAidTrial },
-}: StateInterface) => ({
+}: RootStateType) => ({
   rightAir,
   rightBone,
   leftAir,
@@ -206,12 +205,9 @@ const mapStateToProps = ({
   hearingAidTrial,
 });
 
-const mapDispatchToProps = {
+const mapDispatch = {
   setPoint,
   setAudiogramInput,
 };
 
-export const Audiogram = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AudiogramComponent);
+export const Audiogram = connect(mapState, mapDispatch)(AudiogramComponent);

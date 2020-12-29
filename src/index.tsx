@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 
 import './index.css';
 import { App } from './App';
-import { reducer } from './reducers';
+import { reducer } from './slices';
 
 // import reportWebVitals from './reportWebVitals';
 

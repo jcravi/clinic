@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from 'react';
 import styled from 'styled-components';
-import { IDailyDosageInputs } from '../../interfaces';
+import { DosageStateType } from '../../slices/sheet';
 
 const Div = styled.div<{ light: boolean }>`
   display: flex;
@@ -79,7 +79,7 @@ const ItemDate = styled.div`
 type DailyQuantitiesProps = {
   rowIndex: number;
   light: boolean;
-  dosages: Array<IDailyDosageInputs>;
+  dosages: Array<DosageStateType>;
   onDosageChange: (index: number, name: string, value: string) => void;
   addDosage: () => void;
   removeDosage: () => void;
@@ -99,7 +99,7 @@ export const DailyQuantities = ({
         <Item light={light}>Morning</Item>
         <Item light={light}>Afternoon</Item>
         <Item light={light}>Night</Item>
-        <ItemDate style={{ paddingLeft: '12px', textAlign: 'left' }}>
+        <ItemDate style={{ paddingLeft: '10px', textAlign: 'left' }}>
           Dates
         </ItemDate>
       </Div>
@@ -122,7 +122,7 @@ export const DailyQuantities = ({
         const onChange = ({
           target: { name, value },
         }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-          onDosageChange(i, name as keyof IDailyDosageInputs, value);
+          onDosageChange(i, name as keyof DosageStateType, value);
         };
         return (
           <DailyQuantityRow
@@ -141,7 +141,7 @@ export const DailyQuantities = ({
 
 type DailyQuantityRowProps = {
   light: boolean;
-  dosage: IDailyDosageInputs;
+  dosage: DosageStateType;
   changedDates: (event: React.ChangeEvent<HTMLInputElement>) => void;
   removedDate: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onChange: (
@@ -182,7 +182,7 @@ const DailyQuantityRow = ({
           };
           setTimes(timesCopy);
         };
-        const name = time.toLowerCase() as keyof IDailyDosageInputs;
+        const name = time.toLowerCase() as keyof DosageStateType;
         return (
           <Item key={time} light={light}>
             <NumberInput

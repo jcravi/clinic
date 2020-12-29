@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
-import { StateInterface } from '../../interfaces';
+import { RootStateType } from '../../slices';
 
 const Container = styled.div<{ printLetterHead: boolean }>`
   margin-left: 30px;
@@ -47,7 +47,7 @@ const LetterHeadComponent = ({
   times1,
   times2,
   print,
-}: ReturnType<typeof mapStateToProps>) => {
+}: ReturnType<typeof mapState>) => {
   return (
     <Container printLetterHead={print}>
       <Title>JK Holistic Ear Nose Throat &amp; Head-Neck Clinic</Title>
@@ -71,9 +71,9 @@ const LetterHeadComponent = ({
   );
 };
 
-const mapStateToProps = ({
+const mapState = ({
   letterHead: { name, degrees, reg, days, times1, times2, print },
-}: StateInterface) => ({
+}: RootStateType) => ({
   name,
   degrees,
   reg,
@@ -83,4 +83,4 @@ const mapStateToProps = ({
   print,
 });
 
-export const LetterHead = connect(mapStateToProps)(LetterHeadComponent);
+export const LetterHead = connect(mapState)(LetterHeadComponent);

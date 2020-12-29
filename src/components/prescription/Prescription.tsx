@@ -10,11 +10,7 @@ import {
   HeaderRow,
 } from './Table';
 
-import {
-  IPrescriptionInputs,
-  IDailyDosageInputs,
-  StateInterface,
-} from '../../interfaces/index';
+import { RootStateType } from '../../slices/index';
 
 import {
   setPrescription,
@@ -23,7 +19,9 @@ import {
   removePrescription,
   addDosage,
   removeDosage,
-} from '../../actions/sheets';
+  PrescriptionTextType,
+  DosageStateType,
+} from '../../slices/sheet';
 
 const PrescriptionComponent = ({
   prescriptions,
@@ -33,7 +31,7 @@ const PrescriptionComponent = ({
   removePrescription,
   addDosage,
   removeDosage,
-}: ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps) => {
+}: ReturnType<typeof mapState> & typeof mapDispatch) => {
   return (
     <Table>
       <HeaderRow>
@@ -45,10 +43,14 @@ const PrescriptionComponent = ({
         const onChange = ({
           target: { name, value },
         }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-          setPrescription(index, name as keyof IPrescriptionInputs, value);
+          setPrescription({
+            index,
+            name: name as keyof PrescriptionTextType,
+            value,
+          });
         };
         const onChangeMedicineName = (value: string) => {
-          setPrescription(index, 'medicineName', value);
+          setPrescription({ index, name: 'medicineName', value });
         };
 
         const entered = ({
@@ -76,12 +78,12 @@ const PrescriptionComponent = ({
           name: string,
           value: string
         ) => {
-          setDosage(
-            index,
-            dosageIndex,
-            name as keyof IDailyDosageInputs,
-            value
-          );
+          setDosage({
+            pIndex: index,
+            index: dosageIndex,
+            name: name as keyof DosageStateType,
+            value,
+          });
         };
 
         const RowProps = {
@@ -93,8 +95,8 @@ const PrescriptionComponent = ({
           onChange,
           onChangeMedicineName,
           onDosageChange,
-          addDosage: () => addDosage(index),
-          removeDosage: () => removeDosage(index),
+          addDosage: () => addDosage({ index }),
+          removeDosage: () => removeDosage({ index }),
         };
         return <Row key={`row-key-${index}`} {...RowProps} />;
       })}
@@ -102,11 +104,11 @@ const PrescriptionComponent = ({
   );
 };
 
-const mapStateToProps = ({ sheet: { prescriptions } }: StateInterface) => ({
+const mapState = ({ sheet: { prescriptions } }: RootStateType) => ({
   prescriptions,
 });
 
-const mapDispatchToProps = {
+const mapDispatch = {
   setPrescription,
   addPrescription,
   removePrescription,
@@ -116,6 +118,6 @@ const mapDispatchToProps = {
 };
 
 export const Prescription = connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapState,
+  mapDispatch
 )(PrescriptionComponent);

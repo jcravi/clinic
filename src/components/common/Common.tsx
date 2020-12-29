@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import { StyledLabel } from './CommonComponents';
 import { Label } from './Label';
 
-import { setCommonInput } from '../../actions/common';
-import { ICommonInputs, StateInterface } from '../../interfaces';
+import { setCommonInput, CommonStateType } from '../../slices/common';
+import { RootStateType } from '../../slices';
 
 const Input = styled.input.attrs((_) => ({
   type: 'text',
@@ -56,13 +56,13 @@ const CommonComponent = ({
   ageSex,
   address,
   setCommon,
-}: ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps) => {
+}: ReturnType<typeof mapState> & typeof mapDispatch) => {
   const date = new Date().toLocaleDateString('en-IN');
 
   const onChange = ({
     target: { name, value },
   }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setCommon(name as keyof ICommonInputs, value);
+    setCommon({ name: name as keyof CommonStateType, value });
   };
 
   return (
@@ -127,15 +127,12 @@ const CommonComponent = ({
   );
 };
 
-const mapStateToProps = ({
+const mapState = ({
   common: { fileNo, opdNo, name, ageSex, address },
-}: StateInterface) => ({ fileNo, opdNo, name, ageSex, address });
+}: RootStateType) => ({ fileNo, opdNo, name, ageSex, address });
 
-const mapDispatchToProps = {
+const mapDispatch = {
   setCommon: setCommonInput,
 };
 
-export const Common = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CommonComponent);
+export const Common = connect(mapState, mapDispatch)(CommonComponent);
