@@ -16,8 +16,7 @@ const Container = styled.div<{ printLetterHead: boolean }>`
 
 const Title = styled.div`
   text-align: center;
-  font-size: 30px;
-  font-weight: bold;
+  font-size: 25px;
 `;
 
 const Content = styled.div`
@@ -28,15 +27,14 @@ const Content = styled.div`
 const Address = styled.div`
   text-align: center;
   font-size: 13px;
-  font-weight: bold;
 
   margin-top: 5px;
 
   padding-top: 2px;
   padding-bottom: 2px;
 
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 `;
 
 const LetterHeadComponent = ({

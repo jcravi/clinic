@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -12,6 +12,90 @@ import { Common } from './components/common/Common';
 import { RootStateType } from './slices';
 import { clear } from './slices/clear';
 
+const GlobalStyle = createGlobalStyle<{ printLetterHead: boolean }>`
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  background-color: #fff;
+}
+
+section {
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+  page-break-after: always;
+  width: 210mm;
+  height: 296mm;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+@page {
+  size: A4;
+}
+
+/** For screen preview **/
+@media screen {
+  body {
+    background: #e0e0e0;
+  }
+  section {
+    background: white;
+    box-shadow: 0 0.5mm 2mm rgba(0, 0, 0, 0.3);
+    margin: 5mm auto;
+  }
+}
+
+/** Fix for Chrome issue #273306 **/
+@media print {
+  body {
+    width: ${({ printLetterHead }) => (printLetterHead ? '210mm' : '187mm')};
+  }
+  @page {
+    size: ${({ printLetterHead }) => (printLetterHead ? 'A4' : '187mm 255mm')};
+    margin: 0;
+  }
+  section {
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    page-break-after: always;
+    width: ${({ printLetterHead }) => (printLetterHead ? '210mm' : '187mm')};
+    height: ${({ printLetterHead }) => (printLetterHead ? '296mm' : '255mm')};
+  }
+}
+`;
+
 const OverallDiv = styled.div<{ printLetterHead: boolean }>`
   padding-top: 10px;
   padding-left: 50px;
@@ -19,7 +103,7 @@ const OverallDiv = styled.div<{ printLetterHead: boolean }>`
   font-size: 17px;
   @media print {
     padding-top: ${({ printLetterHead }) =>
-      printLetterHead ? '10mm' : '80mm'};
+      printLetterHead ? '10mm' : '60mm'};
   }
 `;
 
@@ -57,6 +141,7 @@ const AppComponent = ({
 }: ReturnType<typeof mapState> & typeof mapDispatch) => {
   return (
     <>
+      <GlobalStyle printLetterHead={printLetterHead} />
       <LetterHead />
       <OverallDiv printLetterHead={printLetterHead}>
         <Common />
