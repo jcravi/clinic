@@ -1,22 +1,19 @@
 {
   "files": {
-    "main.css": "/clinic/static/css/main.c50f5d58.chunk.css",
-    "main.js": "/clinic/static/js/main.b99a4fde.chunk.js",
-    "main.js.map": "/clinic/static/js/main.b99a4fde.chunk.js.map",
+    "main.js": "/clinic/static/js/main.4c4c78eb.chunk.js",
+    "main.js.map": "/clinic/static/js/main.4c4c78eb.chunk.js.map",
     "runtime-main.js": "/clinic/static/js/runtime-main.cc94648b.js",
     "runtime-main.js.map": "/clinic/static/js/runtime-main.cc94648b.js.map",
-    "static/js/2.3f3f4a82.chunk.js": "/clinic/static/js/2.3f3f4a82.chunk.js",
-    "static/js/2.3f3f4a82.chunk.js.map": "/clinic/static/js/2.3f3f4a82.chunk.js.map",
+    "static/js/2.8bb79ace.chunk.js": "/clinic/static/js/2.8bb79ace.chunk.js",
+    "static/js/2.8bb79ace.chunk.js.map": "/clinic/static/js/2.8bb79ace.chunk.js.map",
     "index.html": "/clinic/index.html",
-    "precache-manifest.ca0945c853b77b06249745280f398b4f.js": "/clinic/precache-manifest.ca0945c853b77b06249745280f398b4f.js",
+    "precache-manifest.82e56cd96ecbe70ace898ff6bc640fb9.js": "/clinic/precache-manifest.82e56cd96ecbe70ace898ff6bc640fb9.js",
     "service-worker.js": "/clinic/service-worker.js",
-    "static/css/main.c50f5d58.chunk.css.map": "/clinic/static/css/main.c50f5d58.chunk.css.map",
-    "static/js/2.3f3f4a82.chunk.js.LICENSE.txt": "/clinic/static/js/2.3f3f4a82.chunk.js.LICENSE.txt"
+    "static/js/2.8bb79ace.chunk.js.LICENSE.txt": "/clinic/static/js/2.8bb79ace.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.cc94648b.js",
-    "static/js/2.3f3f4a82.chunk.js",
-    "static/css/main.c50f5d58.chunk.css",
-    "static/js/main.b99a4fde.chunk.js"
+    "static/js/2.8bb79ace.chunk.js",
+    "static/js/main.4c4c78eb.chunk.js"
   ]
 }
