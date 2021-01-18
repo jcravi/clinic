@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { clear } from './clear';
 
 export interface LetterHeadStateType {
   name: string;
@@ -21,6 +20,16 @@ const initialState: LetterHeadStateType = {
   print: false,
 };
 
+const kanchanInfo: LetterHeadStateType = {
+  name: 'Dr. Kanchan Janardhan',
+  degrees: 'MBBS, MS(ENT), DORL, DYE, PGDHHCM',
+  reg: '45225',
+  days: 'Tue/Fri',
+  times1: '10 am to 1 pm',
+  times2: '6 pm to 8 pm',
+  print: false,
+};
+
 const slice = createSlice({
   name: 'letterHead',
   initialState,
@@ -28,11 +37,14 @@ const slice = createSlice({
     printLetterHead: (state, { payload }: PayloadAction<boolean>) => {
       state.print = payload;
     },
-  },
-  extraReducers: (builder) => {
-    builder.addCase(clear, () => initialState);
+    switchDoctor: (state) => {
+      if (state.reg === '45341') {
+        return kanchanInfo;
+      }
+      return initialState;
+    },
   },
 });
 
-export const { printLetterHead } = slice.actions;
+export const { printLetterHead, switchDoctor } = slice.actions;
 export const { reducer: letterHeadReducer } = slice;

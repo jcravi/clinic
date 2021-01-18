@@ -11,6 +11,7 @@ import { Common } from './components/common/Common';
 
 import { RootStateType } from './slices';
 import { clear } from './slices/clear';
+import { switchDoctor } from './slices/letterHead';
 
 const GlobalStyle = createGlobalStyle<{ printLetterHead: boolean }>`
 
@@ -34,7 +35,7 @@ section {
   box-sizing: border-box;
   page-break-after: always;
   width: 210mm;
-  height: 296mm;
+  height: 297mm;
 }
 
 button,
@@ -61,6 +62,7 @@ label {
 
 @page {
   size: A4;
+  margin: 0;
 }
 
 /** For screen preview **/
@@ -77,11 +79,11 @@ label {
 
 /** Fix for Chrome issue #273306 **/
 @media print {
-  body {
-    width: ${({ printLetterHead }) => (printLetterHead ? '210mm' : '187mm')};
-  }
   @page {
     size: ${({ printLetterHead }) => (printLetterHead ? 'A4' : '187mm 255mm')};
+  }
+  body {
+    width: ${({ printLetterHead }) => (printLetterHead ? '210mm' : '187mm')};
     margin: 0;
   }
   section {
@@ -91,7 +93,7 @@ label {
     box-sizing: border-box;
     page-break-after: always;
     width: ${({ printLetterHead }) => (printLetterHead ? '210mm' : '187mm')};
-    height: ${({ printLetterHead }) => (printLetterHead ? '296mm' : '255mm')};
+    height: ${({ printLetterHead }) => (printLetterHead ? '297mm' : '255mm')};
   }
 }
 `;
@@ -116,6 +118,17 @@ const Navigator = styled.div`
   box-shadow: 0 0 10px gray;
   background-color: white;
   padding: 10px;
+  text-align: left;
+  & button {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    text-align: left;
+    display: inline-block;
+    color: blue;
+    outline: none;
+    cursor: pointer;
+  }
   & > div {
     border-bottom: 1px dashed blue;
     padding-bottom: 5px;
@@ -138,6 +151,7 @@ const Navigator = styled.div`
 const AppComponent = ({
   printLetterHead,
   clear,
+  switchDoctor,
 }: ReturnType<typeof mapState> & typeof mapDispatch) => {
   return (
     <>
@@ -151,6 +165,11 @@ const AppComponent = ({
               <Link to='/' onClick={clear}>
                 <div>Clear</div>
               </Link>
+            </div>
+            <div>
+              <button onClick={switchDoctor}>
+                <div>Switch Dr.</div>
+              </button>
             </div>
             <div>
               <Link to='/precription'>
@@ -185,6 +204,7 @@ const mapState = ({ letterHead: { print } }: RootStateType) => ({
 
 const mapDispatch = {
   clear,
+  switchDoctor,
 };
 
 export const App = connect(mapState, mapDispatch)(AppComponent);
